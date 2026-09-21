@@ -1,4 +1,5 @@
 import { TravelScene } from '../TravelScene/TravelScene';
+import { Icon } from '../Icon/Icon';
 import './FormSection.css';
 
 export function FormSection({
@@ -8,6 +9,7 @@ export function FormSection({
   kicker,
   description,
   scene,
+  icon,
   hasError,
   direction = 'forward',
   children,
@@ -19,7 +21,9 @@ export function FormSection({
     >
       <TravelScene scene={scene} />
       <header className="form-section__header">
-        <span className="form-section__number">{number}</span>
+        <span className="form-section__number" aria-hidden="true">
+          {icon ? <Icon name={icon} size={20} /> : number}
+        </span>
         <div>
           {kicker ? <p className="form-section__kicker">{kicker}</p> : null}
           <h2>{title}</h2>
@@ -30,3 +34,4 @@ export function FormSection({
     </section>
   );
 }
+

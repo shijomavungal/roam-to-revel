@@ -141,6 +141,29 @@ export function Icon({ name, size = 22 }) {
           <path d="m14.8 9.2-1.6 5.4-5.4 1.6 1.6-5.4 5.4-1.6z" />
         </svg>
       );
+    case 'camera':
+      return (
+        <svg {...props}>
+          <path d="M4 8h3l1.6-2h6.8L17 8h3v11H4z" />
+          <circle cx="12" cy="13.2" r="3.2" />
+        </svg>
+      );
+    case 'coin':
+      return (
+        <svg {...props}>
+          <ellipse cx="12" cy="7" rx="7" ry="3" />
+          <path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7" />
+          <path d="M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5" />
+        </svg>
+      );
+    case 'passport':
+      return (
+        <svg {...props}>
+          <rect x="6" y="3" width="12" height="18" rx="1.8" />
+          <circle cx="12" cy="10" r="2.4" />
+          <path d="M8.5 16h7" />
+        </svg>
+      );
     default:
       return null;
   }

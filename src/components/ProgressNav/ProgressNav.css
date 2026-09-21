@@ -81,10 +81,12 @@
   opacity: 0.72;
 }
 
-.progress-nav__item span {
-  font-weight: 700;
-  font-family: var(--display);
+.progress-nav__item span,
+.progress-nav__icon {
   color: var(--ocean);
+  display: grid;
+  place-items: center;
+  height: 22px;
 }
 
 .progress-nav__item em {

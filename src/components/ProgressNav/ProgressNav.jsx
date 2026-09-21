@@ -1,4 +1,5 @@
 import { enquirySections } from '../../data/enquiryFormConfig';
+import { Icon } from '../Icon/Icon';
 import './ProgressNav.css';
 
 export function ProgressNav({ currentIndex, maxReached = 0, errorPrefixes = [], onSelect }) {
@@ -25,8 +26,11 @@ export function ProgressNav({ currentIndex, maxReached = 0, errorPrefixes = [], 
               onClick={() => canSelect && onSelect?.(index)}
               disabled={!canSelect}
               aria-current={index === currentIndex ? 'step' : undefined}
+              aria-label={`Step ${section.number}: ${section.title}`}
             >
-              <span>{index < currentIndex ? '✓' : section.number}</span>
+              <span className="progress-nav__icon">
+                <Icon name={section.icon} size={20} />
+              </span>
               <em>{section.title}</em>
             </button>
           );
