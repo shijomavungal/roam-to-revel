@@ -1,0 +1,22 @@
+.submit-button {
+  width: 100%;
+  border: 0;
+  border-radius: 16px;
+  padding: 16px 20px;
+  background: linear-gradient(160deg, var(--ocean) 0%, var(--ocean-deep) 100%);
+  color: var(--paper);
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(15, 92, 99, 0.24);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.submit-button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}

@@ -1,0 +1,120 @@
+.progress-nav {
+  margin: 8px 0 20px;
+}
+
+.progress-nav__track {
+  position: relative;
+  height: 6px;
+  margin: 0 18px 14px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.progress-nav__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #20c7b8, #f0c45c);
+  transition: width 500ms ease;
+}
+
+.progress-nav__plane {
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 10px;
+  margin-left: -14px;
+  background: #fff;
+  border-radius: 40% 80% 80% 40%;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 10px rgba(7, 28, 51, 0.2);
+  transition: left 500ms ease;
+}
+
+.progress-nav__plane::before,
+.progress-nav__plane::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+}
+
+.progress-nav__plane::before {
+  width: 14px;
+  height: 4px;
+  left: 8px;
+  top: -6px;
+  transform: rotate(-18deg);
+  border-radius: 4px;
+}
+
+.progress-nav__plane::after {
+  width: 10px;
+  height: 4px;
+  right: 3px;
+  top: 7px;
+  transform: rotate(28deg);
+  border-radius: 4px;
+}
+
+.progress-nav__steps {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.progress-nav__item {
+  min-width: 0;
+  border: 0;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
+  border-radius: 14px;
+  padding: 8px 6px;
+  text-align: center;
+  display: grid;
+  gap: 2px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(7, 28, 51, 0.08);
+}
+
+.progress-nav__item:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.progress-nav__item span {
+  font-weight: 700;
+  font-family: var(--display);
+  color: var(--ocean);
+}
+
+.progress-nav__item em {
+  font-style: normal;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress-nav__item.is-current {
+  background: linear-gradient(160deg, #0f6f76, #0a4c54);
+  color: #fffaf3;
+  transform: translateY(-2px);
+}
+
+.progress-nav__item.is-current span {
+  color: #f0c45c;
+}
+
+.progress-nav__item.is-done {
+  background: #e4f7f6;
+}
+
+.progress-nav__item.has-error {
+  box-shadow: inset 0 0 0 2px var(--danger);
+}
+
+@media (max-width: 720px) {
+  .progress-nav__item em {
+    display: none;
+  }
+}

@@ -1,0 +1,11 @@
+.phone-input {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 420px) {
+  .phone-input {
+    grid-template-columns: 1fr;
+  }
+}

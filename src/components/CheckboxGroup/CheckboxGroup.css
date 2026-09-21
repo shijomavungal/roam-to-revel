@@ -1,0 +1,14 @@
+.check-list {
+  display: grid;
+  gap: 10px;
+}
+
+.check-list.cols-2 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .check-list.cols-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
