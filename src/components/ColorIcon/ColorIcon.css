@@ -1,0 +1,14 @@
+.color-icon {
+  display: block;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.color-icon-tile {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--step-soft);
+  transition: transform 220ms ease, background 220ms ease;
+}

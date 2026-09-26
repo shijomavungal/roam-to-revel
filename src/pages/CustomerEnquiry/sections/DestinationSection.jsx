@@ -1,18 +1,18 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextInput } from '../../../components/TextInput/TextInput';
-import { DateInput } from '../../../components/DateInput/DateInput';
 import { RadioGroup } from '../../../components/RadioGroup/RadioGroup';
+import { TripDateRange } from '../../../components/TripDateRange/TripDateRange';
 import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
+import { AirportInput } from '../../../components/AirportInput/AirportInput';
 import {
   DATE_FLEXIBILITY,
   DESTINATION_CERTAINTY,
-  FLY_FROM,
   HOLIDAY_TYPES,
+  YES_NO,
 } from '../../../data/enquiryFormConfig';
 
 export function DestinationSection({ formData, errors, updateField, toggleList }) {
   const { trip } = formData;
-  const today = new Date().toISOString().slice(0, 10);
 
   return (
     <>
@@ -47,31 +47,13 @@ export function DestinationSection({ formData, errors, updateField, toggleList }
         />
       </FormField>
 
-      <div className="field-grid two">
-        <FormField id="departureDate" label="Departure date">
-          <DateInput
-            id="departureDate"
-            name="departureDate"
-            min={today}
-            value={trip.departureDate}
-            onChange={(event) => updateField('trip.departureDate', event.target.value)}
-          />
-        </FormField>
-        <FormField
-          id="returnDate"
-          errorPath="trip.returnDate"
-          label="Return date"
-          error={errors['trip.returnDate']}
-        >
-          <DateInput
-            id="returnDate"
-            name="returnDate"
-            min={trip.departureDate || today}
-            value={trip.returnDate}
-            onChange={(event) => updateField('trip.returnDate', event.target.value)}
-          />
-        </FormField>
-      </div>
+      <TripDateRange
+        departureDate={trip.departureDate}
+        returnDate={trip.returnDate}
+        returnError={errors['trip.returnDate']}
+        onDepartureChange={(value) => updateField('trip.departureDate', value)}
+        onReturnChange={(value) => updateField('trip.returnDate', value)}
+      />
 
       <FormField errorPath="trip.dateFlexibility" label="How flexible are your dates?">
         <RadioGroup
@@ -83,37 +65,35 @@ export function DestinationSection({ formData, errors, updateField, toggleList }
       </FormField>
 
       <FormField
+        id="flyFrom"
         errorPath="trip.flyFrom"
         label="Where would you prefer to fly from?"
         required
+        hint="Start typing and choose an airport from the list."
         error={errors['trip.flyFrom']}
       >
-        <RadioGroup
+        <AirportInput
+          id="flyFrom"
           name="flyFrom"
-          columns={2}
-          options={FLY_FROM}
           value={trip.flyFrom}
           onChange={(value) => updateField('trip.flyFrom', value)}
         />
       </FormField>
 
-      {trip.flyFrom === 'other' ? (
-        <FormField
-          id="flyFromOther"
-          errorPath="trip.flyFromOther"
-          label="Other departure airport / city"
-          required
-          error={errors['trip.flyFromOther']}
-        >
-          <TextInput
-            id="flyFromOther"
-            name="flyFromOther"
-            value={trip.flyFromOther}
-            placeholder="e.g. Birmingham, Dublin, or nearest airport"
-            onChange={(event) => updateField('trip.flyFromOther', event.target.value)}
-          />
-        </FormField>
-      ) : null}
+      <FormField
+        errorPath="trip.flexibleNearestAirport"
+        label="Are you flexible if any other nearest airports are available?"
+        required
+        error={errors['trip.flexibleNearestAirport']}
+      >
+        <RadioGroup
+          name="flexibleNearestAirport"
+          columns={2}
+          options={YES_NO}
+          value={trip.flexibleNearestAirport}
+          onChange={(value) => updateField('trip.flexibleNearestAirport', value)}
+        />
+      </FormField>
 
       <FormField
         errorPath="trip.holidayTypes"

@@ -10,46 +10,12 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .brand__logo {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  color: #fffaf3;
-  background: linear-gradient(160deg, #0f6f76 0%, #083f48 100%);
-  box-shadow: 0 10px 24px rgba(7, 28, 51, 0.18);
-  animation: logoPulse 4.5s ease-in-out infinite;
-}
-
-.brand__name {
-  margin: 0;
-  font-family: var(--display);
-  font-size: 24px;
-  font-weight: 700;
-  color: #fffaf3;
-  text-shadow: 0 2px 12px rgba(7, 28, 51, 0.25);
-}
-
-.brand__tagline {
-  margin: 2px 0 0;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255, 250, 243, 0.82);
-  font-weight: 600;
-}
-
-.site-header__eyebrow {
-  margin: 0 0 6px;
-  color: #f0c45c;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-size: 12px;
+  width: min(400px, 100%);
+  height: auto;
+  display: block;
 }
 
 .site-header__copy h1 {
@@ -59,7 +25,7 @@
   line-height: 1.12;
   font-weight: 600;
   color: #fffaf3;
-  text-shadow: 0 2px 4px rgba(7, 28, 51, 0.35), 0 10px 24px rgba(7, 28, 51, 0.28);
+  text-shadow: 0 2px 10px rgba(14, 28, 51, 0.28);
 }
 
 .site-header__intro {
@@ -67,25 +33,12 @@
   font-size: 16px;
   color: #fffaf3;
   max-width: 38rem;
-  background: rgba(7, 28, 51, 0.38);
+  background: rgba(14, 28, 51, 0.32);
   padding: 10px 14px;
   border-radius: 14px;
   backdrop-filter: blur(8px);
 }
 
-.site-header.is-compact .brand__name {
-  font-size: 20px;
-}
-
-@keyframes logoPulse {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  40% {
-    transform: rotate(-8deg);
-  }
-  70% {
-    transform: rotate(8deg);
-  }
+.site-header.is-compact .brand__logo {
+  width: min(280px, 72%);
 }

@@ -1,29 +1,50 @@
 :root {
-  --navy: #071c33;
-  --ocean: #0f6f76;
-  --ocean-deep: #0a4c54;
-  --ocean-soft: #e4f7f6;
-  --lagoon: #20c7b8;
-  --sunset: #ff6b4a;
-  --apricot: #ffb07a;
-  --gold: #f0c45c;
-  --gold-soft: #fff1c9;
-  --coral: #ff6b4a;
-  --ink: #14283a;
-  --muted: #5a6d79;
-  --line: #d7e3e6;
-  --paper: #fffdf9;
-  --sand: #fff3e4;
+  --navy: #12243f;
+  --ocean: #1c3f73;
+  --ocean-deep: #12284f;
+  --ocean-soft: #eef3f8;
+  --lagoon: #3d6194;
+  --sunset: #1c3f73;
+  --apricot: #e7d7b1;
+  --gold: #c6a15b;
+  --gold-soft: #f6f0e4;
+  --coral: #c6a15b;
+  --ink: #1a2740;
+  --muted: #5e6b7d;
+  --line: #e2e6ee;
+  --paper: #fbfaf7;
+  --sand: #f4efe6;
   --white: #ffffff;
   --danger: #c1392b;
   --danger-soft: #fde7e3;
   --success: #1c8a58;
-  --shadow: 0 18px 50px rgba(7, 28, 51, 0.14);
+  --shadow: 0 18px 50px rgba(5, 10, 74, 0.14);
   --radius: 24px;
   --radius-sm: 14px;
   --max: 860px;
   --font: 'Outfit', Arial, Helvetica, sans-serif;
   --display: 'Fraunces', Georgia, serif;
+  --step-accent: #ff6b4a;
+  --step-soft: #fff1ec;
+  --step-deep: #c2410c;
+}
+
+@property --step-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ff6b4a;
+}
+
+@property --step-soft {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fff1ec;
+}
+
+@property --step-deep {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #c2410c;
 }
 
 * {
@@ -69,6 +90,10 @@ a {
   flex-direction: column;
   position: relative;
   overflow: clip;
+  transition:
+    --step-accent 600ms ease,
+    --step-soft 600ms ease,
+    --step-deep 600ms ease;
 }
 
 .page-wrap {
@@ -112,12 +137,25 @@ a {
     scroll-behavior: auto;
   }
 
+  .app-shell,
   .sky-backdrop *,
   .travel-scene *,
   .form-section.is-entering,
+  .form-section__number,
   .progress-nav__plane,
+  .progress-nav__fill,
+  .progress-nav__item,
+  .choice-card,
+  .choice-card__icon,
+  .choice-item,
+  .choice-item__icon,
+  .step-actions__next,
+  .step-actions__next::after,
+  .step-actions__plane,
   .success-card,
-  .success-card__icon {
+  .success-card__icon,
+  .success-card__icons span,
+  .date-picker * {
     animation: none !important;
     transition: none !important;
   }

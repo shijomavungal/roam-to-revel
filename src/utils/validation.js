@@ -1,4 +1,5 @@
-import { SECTION_PREFIX } from '../data/enquiryFormConfig';
+import { SECTION_PREFIX, TRAVEL_CONFIRMATIONS } from '../data/enquiryFormConfig';
+import { isChildDateOfBirth } from './childDates';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[0-9+\s()-]{7,18}$/;
@@ -9,7 +10,7 @@ function setError(errors, path, message) {
 
 export function validateEnquiry(formData) {
   const errors = {};
-  const { traveller, trip, vibe, budget, importantBits, personalTouch } = formData;
+  const { traveller, trip, vibe, budget, importantBits } = formData;
 
   if (!traveller.fullName.trim()) {
     setError(errors, 'traveller.fullName', 'Please enter your name.');
@@ -31,16 +32,26 @@ export function validateEnquiry(formData) {
 
   const adults = Number(traveller.adults);
   const children = Number(traveller.children);
-  const infants = Number(traveller.infants);
 
   if (!Number.isInteger(adults) || adults < 1) {
     setError(errors, 'traveller.adults', 'At least one adult (18+) is required.');
   }
   if (!Number.isInteger(children) || children < 0) {
     setError(errors, 'traveller.children', 'Children must be 0 or more.');
-  }
-  if (!Number.isInteger(infants) || infants < 0) {
-    setError(errors, 'traveller.infants', 'Infants must be 0 or more.');
+  } else {
+    const dates = traveller.childDatesOfBirth || [];
+    for (let index = 0; index < children; index += 1) {
+      const dob = String(dates[index] || '').trim();
+      if (!dob) {
+        setError(errors, `traveller.childDatesOfBirth.${index}`, `Please enter the date of birth for child ${index + 1}.`);
+      } else if (!isChildDateOfBirth(dob)) {
+        setError(
+          errors,
+          `traveller.childDatesOfBirth.${index}`,
+          `Child ${index + 1} should be under 18 years old.`,
+        );
+      }
+    }
   }
 
   if (!trip.destinationCertainty) {
@@ -56,46 +67,43 @@ export function validateEnquiry(formData) {
   }
 
   if (!trip.flyFrom) {
-    setError(errors, 'trip.flyFrom', 'Please choose a preferred departure airport.');
-  } else if (trip.flyFrom === 'other' && !trip.flyFromOther.trim()) {
-    setError(errors, 'trip.flyFromOther', 'Please specify where you would like to fly from.');
+    setError(errors, 'trip.flyFrom', 'Please select a departure airport.');
+  }
+
+  if (!trip.flexibleNearestAirport) {
+    setError(errors, 'trip.flexibleNearestAirport', 'Please choose Yes or No.');
   }
 
   if (vibe.mustInclude.includes('other') && !vibe.mustIncludeOther.trim()) {
     setError(errors, 'vibe.mustIncludeOther', 'Please tell us what else the holiday must include.');
   }
 
-  if (!budget.range) {
-    setError(errors, 'budget.range', 'Please select an approximate budget.');
-  }
-
-  if (!budget.includes.length) {
-    setError(errors, 'budget.includes', 'Please tell us what the budget needs to include.');
+  const budgetAmount = String(budget.amount || '').trim();
+  if (budgetAmount) {
+    const numeric = Number(budgetAmount.replace(/,/g, ''));
+    if (!Number.isFinite(numeric) || numeric <= 0) {
+      setError(errors, 'budget.amount', 'Please enter a valid amount.');
+    }
   }
 
   if (!budget.accommodationTypes.length) {
     setError(errors, 'budget.accommodationTypes', 'Please choose at least one accommodation preference.');
   }
 
-  if (!importantBits.specialRequirements.length) {
-    setError(errors, 'importantBits.specialRequirements', 'Please select any special requirements, or choose None.');
-  } else if (
+  if (
     importantBits.specialRequirements.includes('other') &&
     !importantBits.specialRequirementsOther.trim()
   ) {
     setError(errors, 'importantBits.specialRequirementsOther', 'Please describe your other requirements.');
   }
 
-  if (!importantBits.passportsReady) {
-    setError(errors, 'importantBits.passportsReady', 'Please confirm passport / travel document status.');
-  }
-
-  if (!importantBits.alreadyBooked.length) {
-    setError(errors, 'importantBits.alreadyBooked', 'Please tell us if you have already booked anything.');
-  }
-
-  if (!personalTouch.holidayPersonality) {
-    setError(errors, 'personalTouch.holidayPersonality', 'Please choose a holiday personality.');
+  const confirmations = importantBits.travelConfirmations || [];
+  if (!TRAVEL_CONFIRMATIONS.every((option) => confirmations.includes(option.value))) {
+    setError(
+      errors,
+      'importantBits.travelConfirmations',
+      'Please confirm passport validity and travel insurance for all travelling members.',
+    );
   }
 
   return errors;

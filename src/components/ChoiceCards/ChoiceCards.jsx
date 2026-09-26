@@ -1,3 +1,4 @@
+import { ColorIcon } from '../ColorIcon/ColorIcon';
 import { Icon } from '../Icon/Icon';
 import './ChoiceCards.css';
 
@@ -25,9 +26,12 @@ export function ChoiceCards({
               checked={selected}
               onChange={() => (multiple ? onToggle(option.value) : onChange(option.value))}
             />
+            <span className="choice-card__tick" aria-hidden="true">
+              <Icon name="check" size={14} />
+            </span>
             {option.icon ? (
-              <span className="choice-card__icon">
-                <Icon name={option.icon} />
+              <span className="choice-card__icon color-icon-tile">
+                <ColorIcon name={option.icon} size={46} />
               </span>
             ) : null}
             <span className="choice-card__label">{option.label}</span>

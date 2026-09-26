@@ -19,26 +19,35 @@
   animation: sectionInForward 500ms ease both;
 }
 
+.success-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 10px;
+  background: linear-gradient(90deg, #ff6b4a, #ffc53d, #12b5b0, #e0457b, #7b5cff, #1fa971, #ff5c8a);
+}
+
 .success-card__plane {
   position: absolute;
   top: 28px;
   left: -40px;
   width: 36px;
   height: 12px;
-  background: #0f6f76;
+  background: var(--step-accent);
   border-radius: 40% 80% 80% 40%;
   animation: planeCruise 8s linear infinite;
 }
 
 .success-card__icon {
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
   margin: 0 auto 16px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #e8f6ee;
-  color: var(--success);
+  background: linear-gradient(135deg, #2bb673, #1c8a58);
+  color: #fff;
+  box-shadow: 0 0 0 8px #e8f6ee, 0 12px 26px rgba(28, 138, 88, 0.3);
   animation: heartPop 1.6s ease-in-out infinite;
 }
 
@@ -48,7 +57,26 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
-  color: var(--ocean);
+  color: var(--step-deep);
+}
+
+.success-card__icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 8px;
+}
+
+.success-card__icons span {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--step-soft);
+  animation: iconHop 1.8s ease-in-out infinite;
+  animation-delay: var(--delay);
 }
 
 .success-card h1 {
@@ -67,7 +95,7 @@
   margin: 20px 0;
   display: grid;
   gap: 10px;
-  background: var(--sand);
+  background: var(--step-soft);
   border-radius: 16px;
   padding: 14px;
   text-align: left;
@@ -89,10 +117,30 @@
   margin-top: 8px;
   padding: 12px 18px;
   border-radius: 12px;
-  background: linear-gradient(160deg, #ff6b4a, #e45432);
+  background: linear-gradient(
+    135deg,
+    var(--step-deep),
+    color-mix(in srgb, var(--step-deep) 82%, var(--step-accent))
+  );
   color: #fff;
   text-decoration: none;
   font-weight: 700;
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--step-accent) 38%, transparent);
+  transition: transform 160ms ease;
+}
+
+.success-card__link:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes iconHop {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-6deg);
+  }
 }
 
 @media (min-width: 640px) {

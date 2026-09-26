@@ -5,33 +5,49 @@
 }
 
 .choice-card {
+  position: relative;
   display: grid;
   justify-items: center;
+  align-content: start;
   text-align: center;
-  gap: 6px;
-  padding: 14px 10px;
-  min-height: 108px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  gap: 8px;
+  padding: 16px 10px 14px;
+  min-height: 118px;
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
   background: var(--white);
   cursor: pointer;
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
 }
 
 .choice-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 18px rgba(15, 111, 118, 0.12);
+  transform: translateY(-4px);
+  border-color: var(--step-accent);
+  box-shadow: 0 12px 22px color-mix(in srgb, var(--step-accent) 22%, transparent);
+}
+
+.choice-card:hover .choice-card__icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.choice-card:focus-within {
+  outline: 3px solid color-mix(in srgb, var(--step-accent) 45%, transparent);
+  outline-offset: 2px;
 }
 
 .choice-card.is-selected {
-  border-color: var(--ocean);
-  background: var(--ocean-soft);
-  box-shadow: 0 0 0 3px rgba(15, 111, 118, 0.12);
+  border-color: var(--step-accent);
+  background: var(--step-soft);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--step-accent) 30%, transparent);
+  animation: choicePop 320ms ease;
 }
 
 .choice-card.is-selected .choice-card__icon {
-  background: linear-gradient(160deg, #20c7b8, #0f6f76);
-  color: var(--paper);
+  background: var(--white);
 }
 
 .choice-card input {
@@ -41,13 +57,30 @@
 }
 
 .choice-card__icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+}
+
+.choice-card__tick {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--sand);
-  color: var(--ocean-deep);
+  background: var(--step-deep);
+  color: var(--white);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 180ms ease, transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.choice-card.is-selected .choice-card__tick {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .choice-card__label {
@@ -59,6 +92,18 @@
 .choice-card__hint {
   color: var(--muted);
   font-size: 12px;
+}
+
+@keyframes choicePop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media (min-width: 720px) {

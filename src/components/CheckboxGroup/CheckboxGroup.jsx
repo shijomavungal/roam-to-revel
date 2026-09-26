@@ -1,3 +1,4 @@
+import { ColorIcon } from '../ColorIcon/ColorIcon';
 import '../RadioGroup/RadioGroup.css';
 import './CheckboxGroup.css';
 
@@ -10,7 +11,7 @@ export function CheckboxGroup({ name, values, onToggle, options, columns = 2 }) 
         return (
           <label
             key={option.value}
-            className={`choice-item is-checked ${checked ? 'is-selected' : ''}`}
+            className={`choice-item is-checked ${option.icon ? 'has-icon' : ''} ${checked ? 'is-selected' : ''}`}
             htmlFor={id}
           >
             <input
@@ -22,6 +23,11 @@ export function CheckboxGroup({ name, values, onToggle, options, columns = 2 }) 
               onChange={() => onToggle(option.value)}
             />
             <span className="choice-item__mark" aria-hidden="true" />
+            {option.icon ? (
+              <span className="choice-item__icon color-icon-tile">
+                <ColorIcon name={option.icon} size={26} />
+              </span>
+            ) : null}
             <span>{option.label}</span>
           </label>
         );

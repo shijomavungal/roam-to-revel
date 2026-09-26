@@ -1,0 +1,54 @@
+.airport-input {
+  position: relative;
+}
+
+.airport-input__list {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  max-height: 280px;
+  overflow: auto;
+}
+
+.airport-input__option {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  gap: 2px;
+  font: inherit;
+  color: inherit;
+}
+
+.airport-input__option.is-active,
+.airport-input__option:hover {
+  background: var(--ocean-soft);
+}
+
+.airport-input__city {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.airport-input__meta,
+.airport-input__empty {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.airport-input__empty {
+  padding: 10px 12px;
+}

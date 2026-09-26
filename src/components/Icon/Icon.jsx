@@ -125,7 +125,11 @@ export function Icon({ name, size = 22 }) {
     case 'plane':
       return (
         <svg {...props}>
-          <path d="M3 12h10l8-4v3l-6 3 6 3v3l-8-4H8l-3 4H3l2-6-2-6h2z" />
+          <path
+            d="M21 12c0-.8-.7-1.5-1.5-1.5H14L10 4H8l2 6.5H5.5L4 8.5H2.5l1 3.5-1 3.5H4l1.5-2H10L8 20h2l4-6.5h5.5c.8 0 1.5-.7 1.5-1.5z"
+            fill="currentColor"
+            stroke="none"
+          />
         </svg>
       );
     case 'check':

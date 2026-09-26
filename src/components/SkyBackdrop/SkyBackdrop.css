@@ -4,39 +4,39 @@
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(circle at 82% 8%, #ffb07a 0%, transparent 28%),
-    linear-gradient(180deg, #163b63 0%, #0c5d6a 42%, #08757c 68%, #f7d7b0 100%);
+    radial-gradient(circle at 86% 12%, rgba(198, 161, 91, 0.28) 0%, transparent 22%),
+    linear-gradient(180deg, #0e1c33 0%, #1a3356 50%, #3d5d82 78%, #e4ddd2 100%);
   transition: background 700ms ease;
 }
 
 .sky-backdrop--destination {
   background:
-    radial-gradient(circle at 18% 12%, #7ad7ff 0%, transparent 26%),
-    linear-gradient(180deg, #0b2f55 0%, #156a8a 48%, #1aa0a8 72%, #d8f3ef 100%);
+    radial-gradient(circle at 18% 12%, rgba(180, 198, 220, 0.28) 0%, transparent 24%),
+    linear-gradient(180deg, #0c1a30 0%, #17304f 52%, #35567a 78%, #e3e7ee 100%);
 }
 
 .sky-backdrop--vibe {
   background:
-    radial-gradient(circle at 70% 6%, #ffe08a 0%, transparent 24%),
-    linear-gradient(180deg, #1c4d7a 0%, #2a7d8c 40%, #f08a5a 78%, #ffd9a8 100%);
+    radial-gradient(circle at 70% 8%, rgba(198, 161, 91, 0.22) 0%, transparent 22%),
+    linear-gradient(180deg, #121e36 0%, #1e3a5c 48%, #4a6280 76%, #e6ddd0 100%);
 }
 
 .sky-backdrop--budget {
   background:
-    radial-gradient(circle at 88% 10%, #f0c45c 0%, transparent 22%),
-    linear-gradient(180deg, #12324d 0%, #1d5e63 46%, #c98a3b 78%, #ffe7b8 100%);
+    radial-gradient(circle at 88% 10%, rgba(198, 161, 91, 0.24) 0%, transparent 20%),
+    linear-gradient(180deg, #101c32 0%, #1c3554 52%, #5c5344 80%, #e8dfd0 100%);
 }
 
 .sky-backdrop--important {
   background:
-    radial-gradient(circle at 12% 10%, #9ad7d3 0%, transparent 24%),
-    linear-gradient(180deg, #10263d 0%, #1a5363 50%, #3e7d86 76%, #e8f4f1 100%);
+    radial-gradient(circle at 12% 10%, rgba(180, 198, 220, 0.22) 0%, transparent 22%),
+    linear-gradient(180deg, #0e1a2e 0%, #1a304c 54%, #3a5574 78%, #e6ebf1 100%);
 }
 
 .sky-backdrop--personal {
   background:
-    radial-gradient(circle at 78% 8%, #ff9aa8 0%, transparent 24%),
-    linear-gradient(180deg, #2a1d4a 0%, #4d3b78 42%, #e36d7a 76%, #ffd6c9 100%);
+    radial-gradient(circle at 78% 8%, rgba(198, 161, 91, 0.2) 0%, transparent 22%),
+    linear-gradient(180deg, #141c32 0%, #243654 48%, #5a5348 78%, #eadfd2 100%);
 }
 
 .sky-backdrop__glow {
@@ -46,19 +46,40 @@
   right: -40px;
   top: -80px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 176, 122, 0.55), transparent 70%);
+  background: radial-gradient(circle, rgba(198, 161, 91, 0.22), transparent 70%);
   animation: glowPulse 7s ease-in-out infinite;
+}
+
+.sky-backdrop__wash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 100%, color-mix(in srgb, var(--step-accent) 38%, transparent), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 90% 100%, color-mix(in srgb, var(--step-accent) 26%, transparent), transparent 70%);
+  transition: background 600ms ease;
+}
+
+.sky-balloon {
+  position: absolute;
+  left: 4%;
+  top: 46%;
+  opacity: 0.9;
+  filter: drop-shadow(0 10px 14px rgba(7, 28, 51, 0.25));
+  animation: balloonDrift 14s ease-in-out infinite;
 }
 
 .sky-sun {
   position: absolute;
-  top: 42px;
+  top: 48px;
   right: 8%;
-  width: 86px;
-  height: 86px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #fff4c8, #ffb14a 55%, #ff6b4a);
-  box-shadow: 0 0 50px rgba(255, 176, 90, 0.55);
+  background: radial-gradient(circle at 35% 35%, #fff6e4, #e6c98a 62%, #c6a15b);
+  box-shadow: 0 0 24px rgba(198, 161, 91, 0.28);
   animation: sunFloat 8s ease-in-out infinite;
 }
 
@@ -80,7 +101,7 @@
 .sky-cloud--one {
   width: 120px;
   height: 36px;
-  top: 210px;
+  top: 58%;
   left: -130px;
   animation: cloudDrift 28s linear infinite;
 }
@@ -102,7 +123,7 @@
 .sky-cloud--two {
   width: 90px;
   height: 28px;
-  top: 280px;
+  top: 68%;
   left: -160px;
   animation: cloudDrift 36s linear infinite;
   animation-delay: -12s;
@@ -118,7 +139,7 @@
 .sky-cloud--three {
   width: 150px;
   height: 40px;
-  top: 340px;
+  top: 78%;
   left: -200px;
   opacity: 0.55;
   animation: cloudDrift 42s linear infinite;
@@ -147,6 +168,18 @@
   border-radius: 40% 80% 80% 40%;
   position: relative;
   box-shadow: 0 6px 16px rgba(7, 28, 51, 0.18);
+}
+
+.sky-plane::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 5px;
+  width: 120px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--step-accent));
+  opacity: 0.8;
 }
 
 .sky-plane span::before,
@@ -184,12 +217,13 @@
 }
 
 .sky-waves__back {
-  fill: rgba(255, 255, 255, 0.18);
+  fill: color-mix(in srgb, var(--step-accent) 45%, transparent);
+  transition: fill 600ms ease;
   animation: waveShift 10s ease-in-out infinite;
 }
 
 .sky-waves__front {
-  fill: rgba(255, 248, 236, 0.92);
+  fill: rgba(255, 248, 220, 0.92);
   animation: waveShift 7s ease-in-out infinite reverse;
 }
 
@@ -236,6 +270,16 @@
   }
 }
 
+@keyframes balloonDrift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-3deg);
+  }
+  50% {
+    transform: translate(18px, -40px) rotate(3deg);
+  }
+}
+
 @keyframes waveShift {
   0%,
   100% {
@@ -248,12 +292,18 @@
 
 @media (max-width: 720px) {
   .sky-sun {
-    width: 64px;
-    height: 64px;
+    width: 44px;
+    height: 44px;
     top: 28px;
   }
 
   .sky-plane {
     top: 86px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .sky-balloon {
+    display: none;
   }
 }

@@ -19,6 +19,13 @@
   background: rgba(255, 255, 255, 0.82);
   color: var(--ink);
   box-shadow: 0 8px 18px rgba(7, 28, 51, 0.08);
+  border: 1.5px solid var(--line);
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.step-actions__back:not(:disabled):hover {
+  border-color: var(--step-accent);
+  color: var(--step-deep);
 }
 
 .step-actions__back:disabled {
@@ -27,9 +34,51 @@
 }
 
 .step-actions__next {
-  background: linear-gradient(160deg, #ff6b4a 0%, #e45432 100%);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(
+    135deg,
+    var(--step-deep),
+    color-mix(in srgb, var(--step-deep) 82%, var(--step-accent))
+  );
   color: #fff;
-  box-shadow: 0 12px 24px rgba(228, 84, 50, 0.28);
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--step-accent) 38%, transparent);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.step-actions__next::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-18deg);
+  animation: nextShimmer 3.6s ease-in-out infinite;
+}
+
+.step-actions__next:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px color-mix(in srgb, var(--step-accent) 48%, transparent);
+}
+
+.step-actions__plane {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.step-actions__next:not(:disabled):hover .step-actions__plane {
+  transform: translateX(6px) rotate(-12deg);
 }
 
 .step-actions__next:disabled {
@@ -39,6 +88,16 @@
 
 .step-actions__next:focus-visible,
 .step-actions__back:focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--step-accent);
   outline-offset: 3px;
+}
+
+@keyframes nextShimmer {
+  0%,
+  55% {
+    left: -60%;
+  }
+  100% {
+    left: 130%;
+  }
 }

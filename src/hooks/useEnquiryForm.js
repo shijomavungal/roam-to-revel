@@ -50,7 +50,7 @@ export function useEnquiryForm() {
       if (value === 'just_me') {
         next.traveller.adults = 1;
         next.traveller.children = 0;
-        next.traveller.infants = 0;
+        next.traveller.childDatesOfBirth = [];
       } else if (value === 'couple' && next.traveller.adults < 2) {
         next.traveller.adults = 2;
       }

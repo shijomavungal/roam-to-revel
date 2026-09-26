@@ -4,10 +4,20 @@ import { TextArea } from '../../../components/TextArea/TextArea';
 import { PhoneInput } from '../../../components/PhoneInput/PhoneInput';
 import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
 import { NumberStepper } from '../../../components/NumberStepper/NumberStepper';
+import { DateInput } from '../../../components/DateInput/DateInput';
 import { GROUP_TYPES } from '../../../data/enquiryFormConfig';
+import { childDateBounds, resizeChildDates } from '../../../utils/childDates';
 
 export function TravellerSection({ formData, errors, updateField, handleGroupType }) {
   const { traveller } = formData;
+  const childCount = Number(traveller.children) || 0;
+  const childDates = traveller.childDatesOfBirth || [];
+  const { min: childDobMin, max: childDobMax } = childDateBounds();
+
+  const handleChildrenChange = (count) => {
+    updateField('traveller.children', count);
+    updateField('traveller.childDatesOfBirth', resizeChildDates(childDates, count));
+  };
 
   return (
     <>
@@ -82,7 +92,7 @@ export function TravellerSection({ formData, errors, updateField, handleGroupTyp
         errorPath="traveller.adults"
         label="Number of travellers"
         required
-        error={errors['traveller.adults'] || errors['traveller.children'] || errors['traveller.infants']}
+        error={errors['traveller.adults'] || errors['traveller.children']}
       >
         <div className="stepper-stack">
           <NumberStepper
@@ -96,19 +106,42 @@ export function TravellerSection({ formData, errors, updateField, handleGroupTyp
           <NumberStepper
             id="children"
             label="Children"
-            hint="2–17"
+            hint="Under 18"
             value={traveller.children}
-            onChange={(value) => updateField('traveller.children', value)}
-          />
-          <NumberStepper
-            id="infants"
-            label="Infants"
-            hint="Under 2"
-            value={traveller.infants}
-            onChange={(value) => updateField('traveller.infants', value)}
+            onChange={handleChildrenChange}
           />
         </div>
       </FormField>
+
+      {childCount > 0 ? (
+        <div className="child-dobs">
+          <p className="child-dobs__label">Date of birth for each child</p>
+          <p className="helper-text">Children are aged under 18.</p>
+          <div className="field-grid two">
+            {Array.from({ length: childCount }, (_, index) => (
+              <FormField
+                key={`child-dob-${index}`}
+                id={`childDob-${index}`}
+                errorPath={`traveller.childDatesOfBirth.${index}`}
+                label={`Child ${index + 1}`}
+                required
+                error={errors[`traveller.childDatesOfBirth.${index}`]}
+              >
+                <DateInput
+                  id={`childDob-${index}`}
+                  name={`childDob-${index}`}
+                  min={childDobMin}
+                  max={childDobMax}
+                  value={childDates[index] || ''}
+                  placeholder="Select date of birth"
+                  title={`Child ${index + 1}'s birthday`}
+                  onChange={(value) => updateField(`traveller.childDatesOfBirth.${index}`, value)}
+                />
+              </FormField>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       <FormField
         id="travelGangNotes"

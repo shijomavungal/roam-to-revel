@@ -12,6 +12,16 @@
   gap: 10px;
 }
 
+.child-dobs {
+  display: grid;
+  gap: 10px;
+}
+
+.child-dobs__label {
+  margin: 0;
+  font-weight: 600;
+}
+
 .enquiry-submit {
   background: rgba(255, 253, 249, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -27,11 +37,16 @@
   font-size: 13px;
 }
 
+.enquiry-submit__cheer {
+  color: var(--step-deep);
+  font-weight: 700;
+}
+
 .site-footer {
   margin-top: auto;
   padding: 24px 16px 32px;
   text-align: center;
-  color: #35505c;
+  color: #3a4578;
   font-size: 13px;
   position: relative;
   z-index: 1;

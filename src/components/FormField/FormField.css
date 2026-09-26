@@ -41,8 +41,8 @@
 .control:focus,
 .select-control:focus,
 .textarea-control:focus {
-  border-color: var(--ocean);
-  box-shadow: 0 0 0 3px rgba(32, 199, 184, 0.18);
+  border-color: var(--step-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--step-accent) 25%, transparent);
 }
 
 .has-error .control,

@@ -1,0 +1,80 @@
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.confetti__piece {
+  position: absolute;
+  width: 9px;
+  height: 13px;
+  background: var(--c);
+  border-radius: 2px;
+  opacity: 0;
+  animation-duration: var(--dur);
+  animation-delay: var(--d);
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1);
+}
+
+.confetti__piece.is-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.confetti__piece.is-strip {
+  width: 5px;
+  height: 18px;
+  border-radius: 3px;
+}
+
+.confetti--burst .confetti__piece {
+  top: 42%;
+  left: 50%;
+  animation-name: confettiBurst;
+}
+
+.confetti--shower .confetti__piece {
+  top: -20px;
+  left: var(--left);
+  animation-name: confettiFall;
+  animation-timing-function: cubic-bezier(0.3, 0.4, 0.6, 1);
+}
+
+@keyframes confettiBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0) scale(0.4);
+  }
+  35% {
+    opacity: 1;
+    transform: translate(calc(var(--x) * 0.7), var(--rise)) rotate(calc(var(--r) * 0.4)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--fall)) rotate(var(--r)) scale(1);
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), 105vh) rotate(var(--r));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti {
+    display: none;
+  }
+}

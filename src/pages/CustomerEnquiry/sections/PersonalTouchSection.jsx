@@ -1,7 +1,6 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextArea } from '../../../components/TextArea/TextArea';
-import { RadioGroup } from '../../../components/RadioGroup/RadioGroup';
-import { CheckboxGroup } from '../../../components/CheckboxGroup/CheckboxGroup';
+import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
 import { HOLIDAY_PERSONALITY, SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
 
 export function PersonalTouchSection({ formData, errors, updateField, toggleList }) {
@@ -10,14 +9,11 @@ export function PersonalTouchSection({ formData, errors, updateField, toggleList
   return (
     <>
       <FormField
-        errorPath="personalTouch.holidayPersonality"
         label="If your holiday had a personality, what would it be?"
-        required
-        error={errors['personalTouch.holidayPersonality']}
+        hint="Leave this blank if you're not sure."
       >
-        <RadioGroup
+        <ChoiceCards
           name="holidayPersonality"
-          columns={2}
           options={HOLIDAY_PERSONALITY}
           value={personalTouch.holidayPersonality}
           onChange={(value) => updateField('personalTouch.holidayPersonality', value)}
@@ -39,8 +35,9 @@ export function PersonalTouchSection({ formData, errors, updateField, toggleList
       </FormField>
 
       <FormField errorPath="personalTouch.specialOccasion" label="Is this trip for a special occasion?">
-        <CheckboxGroup
+        <ChoiceCards
           name="specialOccasion"
+          multiple
           options={SPECIAL_OCCASIONS}
           values={personalTouch.specialOccasion}
           onToggle={(value) => toggleList('personalTouch.specialOccasion', value)}

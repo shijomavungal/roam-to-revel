@@ -3,10 +3,12 @@ import { FormSection } from '../../components/FormSection/FormSection';
 import { ProgressNav } from '../../components/ProgressNav/ProgressNav';
 import { StepActions } from '../../components/StepActions/StepActions';
 import { SkyBackdrop } from '../../components/SkyBackdrop/SkyBackdrop';
+import { Confetti } from '../../components/Confetti/Confetti';
 import { enquirySections, SECTION_PREFIX } from '../../data/enquiryFormConfig';
 import { brandConfig } from '../../data/brandConfig';
 import { useEnquiryForm } from '../../hooks/useEnquiryForm';
 import { sectionHasError } from '../../utils/validation';
+import { stepThemeStyle } from '../../utils/stepTheme';
 import { TravellerSection } from './sections/TravellerSection';
 import { DestinationSection } from './sections/DestinationSection';
 import { VibeSection } from './sections/VibeSection';
@@ -52,8 +54,9 @@ export function CustomerEnquiry() {
   const SectionFields = SECTION_CONTENT[currentSection.id];
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" style={stepThemeStyle(currentSection.theme)}>
       <SkyBackdrop scene={currentSection.scene} />
+      {direction === 'forward' && stepIndex > 0 ? <Confetti key={stepIndex} /> : null}
       <Header compact={stepIndex > 0} />
       <main className="page-wrap enquiry-page">
         <ProgressNav
@@ -85,7 +88,13 @@ export function CustomerEnquiry() {
               nextLabel="Next"
             />
             <p className="enquiry-submit__note">
-              Step {stepIndex + 1} of {enquirySections.length} · {brandConfig.companyName}
+              Step {stepIndex + 1} of {enquirySections.length}
+              {currentSection.cheer ? (
+                <>
+                  {' · '}
+                  <strong className="enquiry-submit__cheer">{currentSection.cheer}</strong>
+                </>
+              ) : null}
             </p>
           </div>
         </form>

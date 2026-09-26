@@ -1,12 +1,11 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextInput } from '../../../components/TextInput/TextInput';
 import { TextArea } from '../../../components/TextArea/TextArea';
-import { RadioGroup } from '../../../components/RadioGroup/RadioGroup';
 import { CheckboxGroup } from '../../../components/CheckboxGroup/CheckboxGroup';
 import {
   ALREADY_BOOKED,
-  PASSPORT_STATUS,
   SPECIAL_REQUIREMENTS,
+  TRAVEL_CONFIRMATIONS,
 } from '../../../data/enquiryFormConfig';
 
 export function ImportantBitsSection({ formData, errors, updateField, toggleList }) {
@@ -15,10 +14,8 @@ export function ImportantBitsSection({ formData, errors, updateField, toggleList
   return (
     <>
       <FormField
-        errorPath="importantBits.specialRequirements"
         label="Do you have any special requirements?"
-        required
-        error={errors['importantBits.specialRequirements']}
+        hint="Leave this blank if you have none."
       >
         <CheckboxGroup
           name="specialRequirements"
@@ -48,24 +45,24 @@ export function ImportantBitsSection({ formData, errors, updateField, toggleList
 
       <div className="field-grid two">
         <FormField
-          errorPath="importantBits.passportsReady"
-          label="Do you already have passports and necessary travel documents?"
+          errorPath="importantBits.travelConfirmations"
+          label="Please confirm before you travel"
           required
-          error={errors['importantBits.passportsReady']}
+          hint="Tick both boxes to continue."
+          error={errors['importantBits.travelConfirmations']}
         >
-          <RadioGroup
-            name="passportsReady"
-            options={PASSPORT_STATUS}
-            value={importantBits.passportsReady}
-            onChange={(value) => updateField('importantBits.passportsReady', value)}
+          <CheckboxGroup
+            name="travelConfirmations"
+            columns={1}
+            options={TRAVEL_CONFIRMATIONS}
+            values={importantBits.travelConfirmations}
+            onToggle={(value) => toggleList('importantBits.travelConfirmations', value)}
           />
         </FormField>
 
         <FormField
-          errorPath="importantBits.alreadyBooked"
           label="Have you already booked anything?"
-          required
-          error={errors['importantBits.alreadyBooked']}
+          hint="Leave this blank if you haven't booked anything yet."
         >
           <CheckboxGroup
             name="alreadyBooked"

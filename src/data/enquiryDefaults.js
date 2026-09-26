@@ -2,12 +2,12 @@ export const createInitialEnquiry = () => ({
   traveller: {
     fullName: '',
     email: '',
-    whatsappCountryCode: '+44',
+    whatsappCountryCode: '+91',
     whatsappNumber: '',
     groupType: '',
     adults: 2,
     children: 0,
-    infants: 0,
+    childDatesOfBirth: [],
     travelGangNotes: '',
   },
   trip: {
@@ -17,7 +17,7 @@ export const createInitialEnquiry = () => ({
     returnDate: '',
     dateFlexibility: '',
     flyFrom: '',
-    flyFromOther: '',
+    flexibleNearestAirport: '',
     holidayTypes: [],
   },
   vibe: {
@@ -27,7 +27,8 @@ export const createInitialEnquiry = () => ({
     wowFactor: '',
   },
   budget: {
-    range: '',
+    amount: '',
+    currency: 'INR',
     includes: [],
     accommodationTypes: [],
     accommodationPriorities: [],
@@ -35,7 +36,7 @@ export const createInitialEnquiry = () => ({
   importantBits: {
     specialRequirements: [],
     specialRequirementsOther: '',
-    passportsReady: '',
+    travelConfirmations: [],
     alreadyBooked: [],
     doNotWant: '',
   },
@@ -55,10 +56,7 @@ export function buildEnquiryPayload(formData) {
     traveller: {
       ...formData.traveller,
       whatsapp: `${formData.traveller.whatsappCountryCode} ${formData.traveller.whatsappNumber}`.trim(),
-      totalTravellers:
-        Number(formData.traveller.adults || 0) +
-        Number(formData.traveller.children || 0) +
-        Number(formData.traveller.infants || 0),
+      totalTravellers: Number(formData.traveller.adults || 0) + Number(formData.traveller.children || 0),
     },
   };
 }

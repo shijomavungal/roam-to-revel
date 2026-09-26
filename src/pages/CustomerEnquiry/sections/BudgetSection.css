@@ -1,0 +1,11 @@
+.budget-amount {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 420px) {
+  .budget-amount {
+    grid-template-columns: 1fr;
+  }
+}
