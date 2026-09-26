@@ -4,9 +4,10 @@
 
 .form-field__label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 600;
   font-size: 15px;
+  line-height: 1.35;
 }
 
 .field-grid {
@@ -15,12 +16,27 @@
 }
 
 @media (min-width: 640px) {
-  .field-grid.two {
+  .field-grid.two,
+  .field-grid.contact {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .field-grid.contact > :last-child {
+    grid-column: 1 / -1;
   }
 
   .field-grid.three {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .field-grid.contact {
+    grid-template-columns: 1fr 1fr 1.3fr;
+  }
+
+  .field-grid.contact > :last-child {
+    grid-column: auto;
   }
 }
 
@@ -52,6 +68,6 @@
 }
 
 .textarea-control {
-  min-height: 110px;
+  min-height: 76px;
   resize: vertical;
 }

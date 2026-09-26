@@ -2,7 +2,7 @@ import { ColorIcon } from '../ColorIcon/ColorIcon';
 import '../RadioGroup/RadioGroup.css';
 import './CheckboxGroup.css';
 
-export function CheckboxGroup({ name, values, onToggle, options, columns = 2 }) {
+export function CheckboxGroup({ name, values, onToggle, options, columns = 'auto' }) {
   return (
     <div className={`check-list cols-${columns}`}>
       {options.map((option) => {
@@ -25,7 +25,7 @@ export function CheckboxGroup({ name, values, onToggle, options, columns = 2 }) 
             <span className="choice-item__mark" aria-hidden="true" />
             {option.icon ? (
               <span className="choice-item__icon color-icon-tile">
-                <ColorIcon name={option.icon} size={26} />
+                <ColorIcon name={option.icon} size={22} />
               </span>
             ) : null}
             <span>{option.label}</span>

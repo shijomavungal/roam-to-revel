@@ -1,14 +1,19 @@
 .check-list {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
-.check-list.cols-2 {
+.check-list.cols-2,
+.check-list.cols-auto {
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 640px) {
   .check-list.cols-2 {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .check-list.cols-auto {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   }
 }

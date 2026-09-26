@@ -4,39 +4,39 @@
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(circle at 86% 12%, rgba(198, 161, 91, 0.28) 0%, transparent 22%),
-    linear-gradient(180deg, #0e1c33 0%, #1a3356 50%, #3d5d82 78%, #e4ddd2 100%);
+    radial-gradient(circle at 86% 12%, rgba(255, 214, 120, 0.45) 0%, transparent 24%),
+    linear-gradient(180deg, #8ecdf2 0%, #a9daf6 40%, #dcebe6 72%, #fbefcc 100%);
   transition: background 700ms ease;
 }
 
 .sky-backdrop--destination {
   background:
-    radial-gradient(circle at 18% 12%, rgba(180, 198, 220, 0.28) 0%, transparent 24%),
-    linear-gradient(180deg, #0c1a30 0%, #17304f 52%, #35567a 78%, #e3e7ee 100%);
+    radial-gradient(circle at 18% 12%, rgba(255, 214, 120, 0.4) 0%, transparent 24%),
+    linear-gradient(180deg, #86cde9 0%, #a4dcee 40%, #d8ede4 72%, #fbefcc 100%);
 }
 
 .sky-backdrop--vibe {
   background:
-    radial-gradient(circle at 70% 8%, rgba(198, 161, 91, 0.22) 0%, transparent 22%),
-    linear-gradient(180deg, #121e36 0%, #1e3a5c 48%, #4a6280 76%, #e6ddd0 100%);
+    radial-gradient(circle at 70% 8%, rgba(255, 214, 120, 0.4) 0%, transparent 22%),
+    linear-gradient(180deg, #96c6f2 0%, #b0d5f6 40%, #e2e6e8 72%, #fbecce 100%);
 }
 
 .sky-backdrop--budget {
   background:
-    radial-gradient(circle at 88% 10%, rgba(198, 161, 91, 0.24) 0%, transparent 20%),
-    linear-gradient(180deg, #101c32 0%, #1c3554 52%, #5c5344 80%, #e8dfd0 100%);
+    radial-gradient(circle at 88% 10%, rgba(255, 214, 120, 0.42) 0%, transparent 22%),
+    linear-gradient(180deg, #8ad0ee 0%, #a7ddf0 40%, #dbede0 72%, #fbefc8 100%);
 }
 
 .sky-backdrop--important {
   background:
-    radial-gradient(circle at 12% 10%, rgba(180, 198, 220, 0.22) 0%, transparent 22%),
-    linear-gradient(180deg, #0e1a2e 0%, #1a304c 54%, #3a5574 78%, #e6ebf1 100%);
+    radial-gradient(circle at 12% 10%, rgba(255, 214, 120, 0.38) 0%, transparent 22%),
+    linear-gradient(180deg, #98c3f2 0%, #b3d3f6 40%, #e2e6ea 72%, #fbeed0 100%);
 }
 
 .sky-backdrop--personal {
   background:
-    radial-gradient(circle at 78% 8%, rgba(198, 161, 91, 0.2) 0%, transparent 22%),
-    linear-gradient(180deg, #141c32 0%, #243654 48%, #5a5348 78%, #eadfd2 100%);
+    radial-gradient(circle at 78% 8%, rgba(255, 214, 120, 0.4) 0%, transparent 22%),
+    linear-gradient(180deg, #92c9f3 0%, #aed8f6 40%, #e2e8e6 72%, #fbeccc 100%);
 }
 
 .sky-backdrop__glow {
@@ -85,7 +85,7 @@
 
 .sky-cloud {
   position: absolute;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 40px;
   filter: drop-shadow(0 8px 12px rgba(7, 28, 51, 0.06));
 }
@@ -213,7 +213,7 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 88px;
+  height: 60px;
 }
 
 .sky-waves__back {

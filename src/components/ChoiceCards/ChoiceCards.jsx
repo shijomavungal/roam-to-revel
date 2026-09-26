@@ -31,7 +31,7 @@ export function ChoiceCards({
             </span>
             {option.icon ? (
               <span className="choice-card__icon color-icon-tile">
-                <ColorIcon name={option.icon} size={46} />
+                <ColorIcon name={option.icon} size={34} />
               </span>
             ) : null}
             <span className="choice-card__label">{option.label}</span>

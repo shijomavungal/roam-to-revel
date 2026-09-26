@@ -64,36 +64,38 @@ export function DestinationSection({ formData, errors, updateField, toggleList }
         />
       </FormField>
 
-      <FormField
-        id="flyFrom"
-        errorPath="trip.flyFrom"
-        label="Where would you prefer to fly from?"
-        required
-        hint="Start typing and choose an airport from the list."
-        error={errors['trip.flyFrom']}
-      >
-        <AirportInput
+      <div className="field-grid two">
+        <FormField
           id="flyFrom"
-          name="flyFrom"
-          value={trip.flyFrom}
-          onChange={(value) => updateField('trip.flyFrom', value)}
-        />
-      </FormField>
+          errorPath="trip.flyFrom"
+          label="Where would you prefer to fly from?"
+          required
+          hint="Start typing and choose an airport from the list."
+          error={errors['trip.flyFrom']}
+        >
+          <AirportInput
+            id="flyFrom"
+            name="flyFrom"
+            value={trip.flyFrom}
+            onChange={(value) => updateField('trip.flyFrom', value)}
+          />
+        </FormField>
 
-      <FormField
-        errorPath="trip.flexibleNearestAirport"
-        label="Are you flexible if any other nearest airports are available?"
-        required
-        error={errors['trip.flexibleNearestAirport']}
-      >
-        <RadioGroup
-          name="flexibleNearestAirport"
-          columns={2}
-          options={YES_NO}
-          value={trip.flexibleNearestAirport}
-          onChange={(value) => updateField('trip.flexibleNearestAirport', value)}
-        />
-      </FormField>
+        <FormField
+          errorPath="trip.flexibleNearestAirport"
+          label="Are you flexible if any other nearest airports are available?"
+          required
+          error={errors['trip.flexibleNearestAirport']}
+        >
+          <RadioGroup
+            name="flexibleNearestAirport"
+            columns={2}
+            options={YES_NO}
+            value={trip.flexibleNearestAirport}
+            onChange={(value) => updateField('trip.flexibleNearestAirport', value)}
+          />
+        </FormField>
+      </div>
 
       <FormField
         errorPath="trip.holidayTypes"

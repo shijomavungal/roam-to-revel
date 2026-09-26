@@ -1,7 +1,10 @@
 .travel-scene {
   position: relative;
-  height: 110px;
-  margin: -4px -4px 14px;
+  display: flex;
+  align-items: center;
+  min-height: 96px;
+  margin: -4px -4px 16px;
+  padding: 12px 16px;
   border-radius: 20px;
   overflow: hidden;
   background:
@@ -46,6 +49,12 @@
   right: 36%;
   top: -34px;
   background: rgba(255, 197, 61, 0.18);
+}
+
+.travel-scene__content {
+  position: relative;
+  z-index: 1;
+  max-width: 62%;
 }
 
 .travel-scene__item {
@@ -191,12 +200,19 @@
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 640px) {
   .travel-scene {
-    height: 96px;
+    min-height: 88px;
+    padding: 10px 12px;
   }
 
-  .travel-scene__item:nth-child(n + 7) {
+  .travel-scene__content {
+    max-width: calc(100% - 84px);
+  }
+
+  .travel-scene__item:nth-child(4),
+  .travel-scene__item:nth-child(5),
+  .travel-scene__item:nth-child(n + 8) {
     display: none;
   }
 }

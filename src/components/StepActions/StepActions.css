@@ -2,14 +2,13 @@
   display: grid;
   grid-template-columns: 1fr 1.6fr;
   gap: 10px;
-  margin-top: 8px;
 }
 
 .step-actions__back,
 .step-actions__next {
   border: 0;
-  border-radius: 16px;
-  min-height: 52px;
+  border-radius: 14px;
+  min-height: 46px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;

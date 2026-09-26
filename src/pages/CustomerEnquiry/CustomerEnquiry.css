@@ -1,15 +1,21 @@
 .enquiry-page {
-  padding-bottom: 56px;
+  padding-bottom: 16px;
 }
 
 .enquiry-form {
   display: grid;
-  gap: 16px;
+  gap: 12px;
 }
 
 .stepper-stack {
   display: grid;
   gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .stepper-stack {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .child-dobs {
@@ -23,15 +29,37 @@
 }
 
 .enquiry-submit {
+  position: sticky;
+  bottom: 12px;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
   background: rgba(255, 253, 249, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 22px;
-  padding: 14px;
+  border-radius: 20px;
+  padding: 10px 12px;
   box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.form-section:has(.date-picker.is-open, .trip-dates__popover, .airport-input__list) {
+  z-index: 4;
+}
+
+.enquiry-submit > .field-error {
+  flex: 1 0 100%;
+  margin: 0;
+}
+
+.enquiry-submit .step-actions {
+  flex: 1 1 100%;
 }
 
 .enquiry-submit__note {
-  margin: 10px 0 0;
+  flex: 1 1 100%;
+  margin: 0;
   text-align: center;
   color: var(--muted);
   font-size: 13px;
@@ -42,12 +70,33 @@
   font-weight: 700;
 }
 
+@media (min-width: 720px) {
+  .enquiry-submit {
+    padding: 10px 12px 10px 20px;
+  }
+
+  .enquiry-submit__note {
+    order: -1;
+    flex: 1 1 auto;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .enquiry-submit .step-actions {
+    flex: 0 1 440px;
+  }
+}
+
 .site-footer {
   margin-top: auto;
-  padding: 24px 16px 32px;
+  padding: 8px 16px 14px;
   text-align: center;
   color: #3a4578;
   font-size: 13px;
   position: relative;
   z-index: 1;
+}
+
+.site-footer p {
+  margin: 0;
 }

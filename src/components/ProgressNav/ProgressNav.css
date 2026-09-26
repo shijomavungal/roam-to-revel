@@ -1,13 +1,13 @@
 .progress-nav {
-  margin: 8px 0 20px;
+  margin: 10px 0 12px;
 }
 
 .progress-nav__track {
   position: relative;
-  height: 8px;
-  margin: 0 18px 18px;
+  height: 6px;
+  margin: 0 18px 14px;
   border-radius: 99px;
-  background: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .progress-nav__fill {
@@ -49,11 +49,14 @@
   border: 0;
   background: rgba(255, 255, 255, 0.82);
   color: var(--muted);
-  border-radius: 14px;
-  padding: 8px 6px;
+  border-radius: 12px;
+  padding: 7px 8px;
   text-align: center;
-  display: grid;
-  gap: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(7, 28, 51, 0.08);
   transition:
@@ -75,12 +78,15 @@
   color: var(--step-deep);
   display: grid;
   place-items: center;
-  height: 22px;
+  flex: 0 0 auto;
+  height: 20px;
 }
 
 .progress-nav__item em {
+  min-width: 0;
   font-style: normal;
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -126,7 +132,7 @@
 }
 
 .progress-nav__item:focus-visible {
-  outline: 3px solid #fff;
+  outline: 3px solid var(--step-deep);
   outline-offset: 2px;
 }
 

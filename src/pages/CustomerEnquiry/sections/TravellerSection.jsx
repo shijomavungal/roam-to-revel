@@ -21,7 +21,7 @@ export function TravellerSection({ formData, errors, updateField, handleGroupTyp
 
   return (
     <>
-      <div className="field-grid two">
+      <div className="field-grid contact">
         <FormField
           id="fullName"
           errorPath="traveller.fullName"
@@ -56,24 +56,24 @@ export function TravellerSection({ formData, errors, updateField, handleGroupTyp
             onChange={(event) => updateField('traveller.email', event.target.value)}
           />
         </FormField>
-      </div>
 
-      <FormField
-        id="whatsappNumber"
-        errorPath="traveller.whatsappNumber"
-        label="WhatsApp / Mobile number"
-        required
-        hint="We will use this to share itinerary ideas with you."
-        error={errors['traveller.whatsappNumber']}
-      >
-        <PhoneInput
+        <FormField
           id="whatsappNumber"
-          countryCode={traveller.whatsappCountryCode}
-          number={traveller.whatsappNumber}
-          onCountryChange={(event) => updateField('traveller.whatsappCountryCode', event.target.value)}
-          onNumberChange={(event) => updateField('traveller.whatsappNumber', event.target.value)}
-        />
-      </FormField>
+          errorPath="traveller.whatsappNumber"
+          label="WhatsApp / Mobile number"
+          required
+          hint="We will use this to share itinerary ideas with you."
+          error={errors['traveller.whatsappNumber']}
+        >
+          <PhoneInput
+            id="whatsappNumber"
+            countryCode={traveller.whatsappCountryCode}
+            number={traveller.whatsappNumber}
+            onCountryChange={(event) => updateField('traveller.whatsappCountryCode', event.target.value)}
+            onNumberChange={(event) => updateField('traveller.whatsappNumber', event.target.value)}
+          />
+        </FormField>
+      </div>
 
       <FormField
         errorPath="traveller.groupType"

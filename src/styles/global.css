@@ -29,6 +29,12 @@
   --step-deep: #c2410c;
 }
 
+@media (min-width: 1100px) {
+  :root {
+    --max: 1060px;
+  }
+}
+
 @property --step-accent {
   syntax: '<color>';
   inherits: true;
@@ -65,7 +71,7 @@ body {
   margin: 0;
   font-family: var(--font);
   color: var(--ink);
-  background: var(--navy);
+  background: #a9daf6;
   line-height: 1.5;
 }
 

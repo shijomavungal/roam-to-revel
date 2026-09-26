@@ -47,7 +47,7 @@ export function ProgressNav({ currentIndex, maxReached = 0, errorPrefixes = [], 
                 </span>
               ) : null}
               <span className="progress-nav__icon">
-                <Icon name={section.icon} size={20} />
+                <Icon name={section.icon} size={18} />
               </span>
               <em>{section.title}</em>
             </button>

@@ -1,7 +1,7 @@
 import { ColorIcon } from '../ColorIcon/ColorIcon';
 import './RadioGroup.css';
 
-export function RadioGroup({ name, value, onChange, options, columns = 1 }) {
+export function RadioGroup({ name, value, onChange, options, columns = 'auto' }) {
   return (
     <div className={`choice-list cols-${columns}`} role="radiogroup">
       {options.map((option) => {
@@ -24,7 +24,7 @@ export function RadioGroup({ name, value, onChange, options, columns = 1 }) {
             <span className="choice-item__mark" aria-hidden="true" />
             {option.icon ? (
               <span className="choice-item__icon color-icon-tile">
-                <ColorIcon name={option.icon} size={26} />
+                <ColorIcon name={option.icon} size={22} />
               </span>
             ) : null}
             <span>{option.label}</span>
