@@ -1,11 +1,32 @@
 .phone-input {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 120px minmax(0, 1fr);
   gap: 10px;
+}
+
+.phone-input .control {
+  min-width: 0;
 }
 
 @media (max-width: 420px) {
   .phone-input {
-    grid-template-columns: 1fr;
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .phone-input__code.select-control {
+    padding-left: 10px;
+    padding-right: 6px;
+  }
+}
+
+@media (max-width: 340px) {
+  .phone-input {
+    grid-template-columns: 102px minmax(0, 1fr);
+  }
+
+  .phone-input__code.select-control {
+    padding-left: 8px;
+    padding-right: 4px;
   }
 }
