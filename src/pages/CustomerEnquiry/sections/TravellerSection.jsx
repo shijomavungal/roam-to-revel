@@ -8,11 +8,14 @@ import { DateInput } from '../../../components/DateInput/DateInput';
 import { GROUP_TYPES } from '../../../data/enquiryFormConfig';
 import { childDateBounds, resizeChildDates } from '../../../utils/childDates';
 
+const PARTY_SIZE_GROUPS = new Set(['family', 'friends', 'group', 'something_special']);
+
 export function TravellerSection({ formData, errors, updateField, handleGroupType }) {
   const { traveller } = formData;
   const childCount = Number(traveller.children) || 0;
   const childDates = traveller.childDatesOfBirth || [];
   const { min: childDobMin, max: childDobMax } = childDateBounds();
+  const showPartySize = PARTY_SIZE_GROUPS.has(traveller.groupType);
 
   const handleChildrenChange = (count) => {
     updateField('traveller.children', count);
@@ -88,58 +91,60 @@ export function TravellerSection({ formData, errors, updateField, handleGroupTyp
         />
       </FormField>
 
-      <FormField
-        errorPath="traveller.adults"
-        label="Number of travellers"
-        required
-        error={errors['traveller.adults'] || errors['traveller.children']}
-      >
-        <div className="stepper-stack">
-          <NumberStepper
-            id="adults"
-            label="Adults"
-            hint="18+"
-            min={1}
-            value={traveller.adults}
-            onChange={(value) => updateField('traveller.adults', value)}
-          />
-          <NumberStepper
-            id="children"
-            label="Children"
-            hint="Under 18"
-            value={traveller.children}
-            onChange={handleChildrenChange}
-          />
-        </div>
-      </FormField>
+      {showPartySize ? (
+        <div className="party-size">
+          <FormField
+            errorPath="traveller.adults"
+            error={errors['traveller.adults'] || errors['traveller.children']}
+          >
+            <div className="stepper-stack">
+              <NumberStepper
+                id="adults"
+                label="Number of adults"
+                hint="18+"
+                min={1}
+                value={traveller.adults}
+                onChange={(value) => updateField('traveller.adults', value)}
+              />
+              <NumberStepper
+                id="children"
+                label="Number of children"
+                hint="Under 18"
+                value={traveller.children}
+                onChange={handleChildrenChange}
+              />
+            </div>
+          </FormField>
 
-      {childCount > 0 ? (
-        <div className="child-dobs">
-          <p className="child-dobs__label">Date of birth for each child</p>
-          <p className="helper-text">Children are aged under 18.</p>
-          <div className="field-grid two">
-            {Array.from({ length: childCount }, (_, index) => (
-              <FormField
-                key={`child-dob-${index}`}
-                id={`childDob-${index}`}
-                errorPath={`traveller.childDatesOfBirth.${index}`}
-                label={`Child ${index + 1}`}
-                required
-                error={errors[`traveller.childDatesOfBirth.${index}`]}
-              >
-                <DateInput
-                  id={`childDob-${index}`}
-                  name={`childDob-${index}`}
-                  min={childDobMin}
-                  max={childDobMax}
-                  value={childDates[index] || ''}
-                  placeholder="Select date of birth"
-                  title={`Child ${index + 1}'s birthday`}
-                  onChange={(value) => updateField(`traveller.childDatesOfBirth.${index}`, value)}
-                />
-              </FormField>
-            ))}
-          </div>
+          {childCount > 0 ? (
+            <div className="child-dobs">
+              <p className="child-dobs__label">Date of birth for each child</p>
+              <p className="helper-text">Children are aged under 18.</p>
+              <div className="field-grid two">
+                {Array.from({ length: childCount }, (_, index) => (
+                  <FormField
+                    key={`child-dob-${index}`}
+                    id={`childDob-${index}`}
+                    errorPath={`traveller.childDatesOfBirth.${index}`}
+                    label={`Child ${index + 1}`}
+                    required
+                    error={errors[`traveller.childDatesOfBirth.${index}`]}
+                  >
+                    <DateInput
+                      id={`childDob-${index}`}
+                      name={`childDob-${index}`}
+                      min={childDobMin}
+                      max={childDobMax}
+                      value={childDates[index] || ''}
+                      placeholder="Select date of birth"
+                      title={`Child ${index + 1}'s birthday`}
+                      onChange={(value) => updateField(`traveller.childDatesOfBirth.${index}`, value)}
+                    />
+                  </FormField>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
 

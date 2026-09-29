@@ -1,25 +1,13 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextArea } from '../../../components/TextArea/TextArea';
 import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
-import { HOLIDAY_PERSONALITY, SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
+import { SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
 
 export function PersonalTouchSection({ formData, updateField, toggleList }) {
   const { personalTouch } = formData;
 
   return (
     <>
-      <FormField
-        label="If your holiday had a personality, what would it be?"
-        hint="Leave this blank if you're not sure."
-      >
-        <ChoiceCards
-          name="holidayPersonality"
-          options={HOLIDAY_PERSONALITY}
-          value={personalTouch.holidayPersonality}
-          onChange={(value) => updateField('personalTouch.holidayPersonality', value)}
-        />
-      </FormField>
-
       <FormField errorPath="personalTouch.specialOccasion" label="Is this trip for a special occasion?">
         <ChoiceCards
           name="specialOccasion"

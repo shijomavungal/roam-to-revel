@@ -1,7 +1,7 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextInput } from '../../../components/TextInput/TextInput';
 import { TextArea } from '../../../components/TextArea/TextArea';
-import { RadioGroup } from '../../../components/RadioGroup/RadioGroup';
+import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
 import { CheckboxGroup } from '../../../components/CheckboxGroup/CheckboxGroup';
 import { HOLIDAY_PACE, MUST_INCLUDE } from '../../../data/enquiryFormConfig';
 
@@ -12,10 +12,11 @@ export function VibeSection({ formData, errors, updateField, toggleList }) {
     <>
       <FormField
         errorPath="vibe.pace"
-        label="Your ideal holiday pace is..."
+        label="What's your ideal holiday vibe?"
+        hint="Choose the one that feels most like your trip."
         error={errors['vibe.pace']}
       >
-        <RadioGroup
+        <ChoiceCards
           name="pace"
           options={HOLIDAY_PACE}
           value={vibe.pace}

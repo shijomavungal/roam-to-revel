@@ -17,7 +17,6 @@ export function Header({ compact = false }) {
         </div>
         {compact ? null : (
           <div className="site-header__copy">
-            <h1>{brandConfig.heroTitle}</h1>
             <p className="site-header__intro">{brandConfig.intro}</p>
           </div>
         )}

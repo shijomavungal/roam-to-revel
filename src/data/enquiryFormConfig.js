@@ -23,9 +23,9 @@ export const GROUP_TYPES = [
 ];
 
 export const DESTINATION_CERTAINTY = [
-  { value: 'decided', label: 'Yes, I know exactly where I want to go', icon: 'pin' },
+  { value: 'decided', label: 'Yes, I already know exactly where I want to go', icon: 'pin' },
   { value: 'ideas', label: 'I have a few ideas', icon: 'lightbulb' },
-  { value: 'surprise', label: "Surprise me! I'm open to suggestions", icon: 'gift' },
+  { value: 'surprise', label: "Surprise me. I'm open to suggestions", icon: 'gift' },
 ];
 
 export const DATE_FLEXIBILITY = [
@@ -53,9 +53,15 @@ export const HOLIDAY_TYPES = [
 
 export const HOLIDAY_PACE = [
   { value: 'slow', label: 'Slow & relaxed', icon: 'relax' },
+  { value: 'relaxed_luxury', label: 'Relaxed & luxurious', icon: 'resort' },
   { value: 'mix', label: 'Some sightseeing + relaxation', icon: 'compass' },
-  { value: 'packed', label: 'I want to see EVERYTHING!', icon: 'rocket' },
   { value: 'in_between', label: 'Somewhere in between', icon: 'halfday' },
+  { value: 'adventurous', label: 'Adventurous & exciting', icon: 'adventure' },
+  { value: 'packed', label: 'I want to see EVERYTHING!', icon: 'rocket' },
+  { value: 'romantic', label: 'Romantic & dreamy', icon: 'romantic' },
+  { value: 'family', label: 'Fun & family-friendly', icon: 'family' },
+  { value: 'cultural', label: 'Cultural & meaningful', icon: 'culture' },
+  { value: 'instagram', label: 'Instagram-worthy', icon: 'selfie' },
 ];
 
 export const MUST_INCLUDE = [
@@ -149,15 +155,6 @@ export const ALREADY_BOOKED = [
   { value: 'activities', label: 'Some activities booked', icon: 'ticket' },
 ];
 
-export const HOLIDAY_PERSONALITY = [
-  { value: 'relaxed_luxury', label: 'Relaxed & luxurious', icon: 'resort' },
-  { value: 'adventurous', label: 'Adventurous & exciting', icon: 'adventure' },
-  { value: 'romantic', label: 'Romantic & dreamy', icon: 'romantic' },
-  { value: 'family', label: 'Fun & family-friendly', icon: 'family' },
-  { value: 'cultural', label: 'Cultural & meaningful', icon: 'culture' },
-  { value: 'instagram', label: 'Instagram-worthy', icon: 'selfie' },
-];
-
 export const SPECIAL_OCCASIONS = [
   { value: 'birthday', label: 'Birthday', icon: 'cake' },
   { value: 'anniversary', label: 'Anniversary', icon: 'rings' },
@@ -192,15 +189,25 @@ export const enquirySections = [
     number: '2',
     title: 'Where Shall We Go?',
     kicker: 'The world is waiting',
-    description: 'Where shall we send you?',
     scene: 'destination',
     icon: 'plane',
     theme: { accent: '#12b5b0', soft: '#e6f8f7', deep: '#0f766e' },
     cheer: 'The world is your oyster!',
   },
   {
-    id: 'vibe',
+    id: 'budget',
     number: '3',
+    title: 'A holiday that fits',
+    kicker: 'Comfortable, and still wonderful',
+    description: "Don't worry, we won't judge your budget.",
+    scene: 'budget',
+    icon: 'coin',
+    theme: { accent: '#1fa971', soft: '#e8f7ef', deep: '#047857' },
+    cheer: 'Your trip is taking shape!',
+  },
+  {
+    id: 'vibe',
+    number: '4',
     title: 'Your Holiday Vibe',
     kicker: 'Dream. Explore. Repeat.',
     description: 'Tell us what makes your perfect trip.',
@@ -208,17 +215,6 @@ export const enquirySections = [
     icon: 'camera',
     theme: { accent: '#e0457b', soft: '#fdeef4', deep: '#be185d' },
     cheer: 'Halfway to paradise!',
-  },
-  {
-    id: 'budget',
-    number: '4',
-    title: "Let's Talk Money",
-    kicker: 'Great trip, smart budget',
-    description: "Don't worry, we won't judge your budget.",
-    scene: 'budget',
-    icon: 'coin',
-    theme: { accent: '#1fa971', soft: '#e8f7ef', deep: '#047857' },
-    cheer: 'Your trip is taking shape!',
   },
   {
     id: 'important',

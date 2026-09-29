@@ -45,7 +45,7 @@ export function BudgetSection({ formData, errors, updateField, toggleList }) {
       </FormField>
 
       <FormField
-        label="What does your budget need to include?"
+        label="What should your budget include?"
         hint="Select everything that should be covered. Leave this blank if you are not sure yet."
       >
         <CheckboxGroup

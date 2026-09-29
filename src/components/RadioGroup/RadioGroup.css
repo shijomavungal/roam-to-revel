@@ -65,9 +65,8 @@
 }
 
 .choice-item__icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
+  width: 34px;
+  height: 34px;
 }
 
 .choice-item__mark {
@@ -89,10 +88,6 @@
   border-color: var(--step-accent);
   background: var(--step-soft);
   animation: choiceItemPop 280ms ease;
-}
-
-.choice-item.is-selected .choice-item__icon {
-  background: var(--white);
 }
 
 .choice-item.is-selected .choice-item__mark {

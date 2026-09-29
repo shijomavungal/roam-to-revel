@@ -51,12 +51,16 @@ export function useEnquiryForm() {
         next.traveller.adults = 1;
         next.traveller.children = 0;
         next.traveller.childDatesOfBirth = [];
-      } else if (value === 'couple' && next.traveller.adults < 2) {
+      } else if (value === 'couple') {
         next.traveller.adults = 2;
+        next.traveller.children = 0;
+        next.traveller.childDatesOfBirth = [];
       }
       return next;
     });
     clearError('traveller.groupType');
+    clearError('traveller.adults');
+    clearError('traveller.children');
   };
 
   const scrollToFirstError = (nextErrors) => {

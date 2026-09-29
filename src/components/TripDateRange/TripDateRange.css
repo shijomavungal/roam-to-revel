@@ -2,6 +2,22 @@
   position: relative;
 }
 
+.trip-dates__fields {
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .trip-dates__fields .form-field__label {
+    font-size: 13px;
+  }
+
+  .trip-dates__trigger {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+}
+
 .trip-dates__trigger {
   display: flex;
   align-items: center;

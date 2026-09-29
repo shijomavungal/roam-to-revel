@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FormField } from '../../../components/FormField/FormField';
 import { TextInput } from '../../../components/TextInput/TextInput';
 import { RadioGroup } from '../../../components/RadioGroup/RadioGroup';
@@ -11,8 +12,27 @@ import {
   YES_NO,
 } from '../../../data/enquiryFormConfig';
 
+const DESTINATION_PROMPTS = {
+  decided: {
+    label: 'Which destination is calling your name?',
+    placeholder: 'e.g. The Maldives',
+    hint: 'A country, city, or region is perfect.',
+  },
+  ideas: {
+    label: 'Which destinations are calling your name?',
+    placeholder: 'e.g. Italy, Greece, or Japan',
+    hint: 'Share as many as you like.',
+  },
+};
+
 export function DestinationSection({ formData, errors, updateField, toggleList }) {
   const { trip } = formData;
+  const destinationPrompt = DESTINATION_PROMPTS[trip.destinationCertainty];
+
+  useEffect(() => {
+    if (!destinationPrompt) return;
+    document.getElementById('destinations')?.focus();
+  }, [trip.destinationCertainty, destinationPrompt]);
 
   return (
     <>
@@ -22,30 +42,36 @@ export function DestinationSection({ formData, errors, updateField, toggleList }
         required
         error={errors['trip.destinationCertainty']}
       >
-        <RadioGroup
-          name="destinationCertainty"
-          options={DESTINATION_CERTAINTY}
-          value={trip.destinationCertainty}
-          onChange={(value) => updateField('trip.destinationCertainty', value)}
-        />
+        <div className="destination-choices">
+          <ChoiceCards
+            name="destinationCertainty"
+            options={DESTINATION_CERTAINTY}
+            value={trip.destinationCertainty}
+            onChange={(value) => updateField('trip.destinationCertainty', value)}
+          />
+        </div>
       </FormField>
 
-      <FormField
-        id="destinations"
-        errorPath="trip.destinations"
-        label="Which destination(s) are calling your name?"
-        required={trip.destinationCertainty !== 'surprise'}
-        hint="e.g. Italy, Greece, Japan, Maldives"
-        error={errors['trip.destinations']}
-      >
-        <TextInput
-          id="destinations"
-          name="destinations"
-          value={trip.destinations}
-          placeholder="Share a country, city, or a few ideas"
-          onChange={(event) => updateField('trip.destinations', event.target.value)}
-        />
-      </FormField>
+      {destinationPrompt ? (
+        <div className="destination-followup" key={trip.destinationCertainty}>
+          <FormField
+            id="destinations"
+            errorPath="trip.destinations"
+            label={destinationPrompt.label}
+            required
+            hint={destinationPrompt.hint}
+            error={errors['trip.destinations']}
+          >
+            <TextInput
+              id="destinations"
+              name="destinations"
+              value={trip.destinations}
+              placeholder={destinationPrompt.placeholder}
+              onChange={(event) => updateField('trip.destinations', event.target.value)}
+            />
+          </FormField>
+        </div>
+      ) : null}
 
       <TripDateRange
         departureDate={trip.departureDate}

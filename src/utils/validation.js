@@ -58,8 +58,12 @@ export function validateEnquiry(formData) {
     setError(errors, 'trip.destinationCertainty', 'Please tell us how decided you are on a destination.');
   }
 
-  if (trip.destinationCertainty !== 'surprise' && !trip.destinations.trim()) {
-    setError(errors, 'trip.destinations', 'Please share at least one destination or idea.');
+  if (trip.destinationCertainty === 'decided' && !trip.destinations.trim()) {
+    setError(errors, 'trip.destinations', 'Please tell us which destination is calling your name.');
+  }
+
+  if (trip.destinationCertainty === 'ideas' && !trip.destinations.trim()) {
+    setError(errors, 'trip.destinations', 'Please tell us which destinations are calling your name.');
   }
 
   if (trip.departureDate && trip.returnDate && trip.returnDate < trip.departureDate) {

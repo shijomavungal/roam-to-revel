@@ -41,7 +41,6 @@ export const createInitialEnquiry = () => ({
     doNotWant: '',
   },
   personalTouch: {
-    holidayPersonality: '',
     dreamExperience: '',
     specialOccasion: [],
     additionalNotes: '',
@@ -53,6 +52,11 @@ export function buildEnquiryPayload(formData) {
     source: 'public_enquiry_form',
     submittedAt: new Date().toISOString(),
     ...formData,
+    trip: {
+      ...formData.trip,
+      destinations:
+        formData.trip.destinationCertainty === 'surprise' ? '' : formData.trip.destinations,
+    },
     traveller: {
       ...formData.traveller,
       whatsapp: `${formData.traveller.whatsappCountryCode} ${formData.traveller.whatsappNumber}`.trim(),

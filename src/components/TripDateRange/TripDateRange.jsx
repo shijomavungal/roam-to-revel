@@ -137,7 +137,7 @@ export function TripDateRange({
 
   return (
     <div className="trip-dates" ref={rootRef}>
-      <div className="field-grid two">
+      <div className="field-grid two trip-dates__fields">
         <FormField id="departureDate" label="Departure date">
           <button
             id="departureDate"
