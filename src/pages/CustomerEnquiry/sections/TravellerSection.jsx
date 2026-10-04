@@ -1,6 +1,5 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextInput } from '../../../components/TextInput/TextInput';
-import { TextArea } from '../../../components/TextArea/TextArea';
 import { PhoneInput } from '../../../components/PhoneInput/PhoneInput';
 import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
 import { NumberStepper } from '../../../components/NumberStepper/NumberStepper';
@@ -147,20 +146,6 @@ export function TravellerSection({ formData, errors, updateField, handleGroupTyp
           ) : null}
         </div>
       ) : null}
-
-      <FormField
-        id="travelGangNotes"
-        label="Tell us a little about your travel gang"
-        hint="e.g. family with 2 children, honeymooners, elderly parents, etc."
-      >
-        <TextArea
-          id="travelGangNotes"
-          name="travelGangNotes"
-          value={traveller.travelGangNotes}
-          placeholder="Who is travelling, and what should we keep in mind?"
-          onChange={(event) => updateField('traveller.travelGangNotes', event.target.value)}
-        />
-      </FormField>
     </>
   );
 }

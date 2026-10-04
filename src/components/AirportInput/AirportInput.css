@@ -39,6 +39,8 @@
 }
 
 .airport-input__city {
+  font-family: var(--display);
+  font-size: var(--fs-label);
   font-weight: 700;
   color: var(--ink);
 }
@@ -46,7 +48,7 @@
 .airport-input__meta,
 .airport-input__empty {
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--fs-body);
 }
 
 .airport-input__empty {

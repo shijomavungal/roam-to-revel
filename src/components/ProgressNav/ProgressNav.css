@@ -85,8 +85,9 @@
 .progress-nav__item em {
   min-width: 0;
   font-style: normal;
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--display);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-bold);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

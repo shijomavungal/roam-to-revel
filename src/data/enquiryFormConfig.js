@@ -39,42 +39,16 @@ export const YES_NO = [
   { value: 'no', label: 'No', icon: 'cross' },
 ];
 
-export const HOLIDAY_TYPES = [
-  { value: 'beach', label: 'Beach & Relaxation', icon: 'beach' },
-  { value: 'culture', label: 'Culture & History', icon: 'culture' },
-  { value: 'mountains', label: 'Mountains & Adventure', icon: 'mountains' },
-  { value: 'food', label: 'Food & Experiences', icon: 'food' },
-  { value: 'shopping', label: 'Shopping & City Life', icon: 'shopping' },
-  { value: 'nature', label: 'Nature & Wildlife', icon: 'nature' },
-  { value: 'romantic', label: 'Romantic Escape', icon: 'romantic' },
-  { value: 'family_fun', label: 'Family Fun', icon: 'family' },
-  { value: 'everything', label: 'A bit of everything!', icon: 'globe' },
-];
-
-export const HOLIDAY_PACE = [
-  { value: 'slow', label: 'Slow & relaxed', icon: 'relax' },
-  { value: 'relaxed_luxury', label: 'Relaxed & luxurious', icon: 'resort' },
-  { value: 'mix', label: 'Some sightseeing + relaxation', icon: 'compass' },
-  { value: 'in_between', label: 'Somewhere in between', icon: 'halfday' },
-  { value: 'adventurous', label: 'Adventurous & exciting', icon: 'adventure' },
-  { value: 'packed', label: 'I want to see EVERYTHING!', icon: 'rocket' },
-  { value: 'romantic', label: 'Romantic & dreamy', icon: 'romantic' },
-  { value: 'family', label: 'Fun & family-friendly', icon: 'family' },
-  { value: 'cultural', label: 'Cultural & meaningful', icon: 'culture' },
-  { value: 'instagram', label: 'Instagram-worthy', icon: 'selfie' },
-];
-
-export const MUST_INCLUDE = [
-  { value: 'landmarks', label: 'Landmarks', icon: 'landmark' },
-  { value: 'beaches', label: 'Beaches', icon: 'beach' },
-  { value: 'museums', label: 'Museums', icon: 'art' },
-  { value: 'shopping', label: 'Shopping', icon: 'shopping' },
-  { value: 'adventure', label: 'Adventure', icon: 'adventure' },
+export const HOLIDAY_VIBES = [
+  { value: 'relax', label: 'Relax & unwind', icon: 'beach' },
+  { value: 'explore', label: 'Explore & discover', icon: 'landmark' },
+  { value: 'adventure', label: 'Adventure & nature', icon: 'mountains' },
   { value: 'food', label: 'Food & local experiences', icon: 'food' },
-  { value: 'romantic', label: 'Romantic experiences', icon: 'romantic' },
-  { value: 'nightlife', label: 'Nightlife', icon: 'nightlife' },
-  { value: 'photography', label: 'Photography spots', icon: 'camera' },
-  { value: 'other', label: 'Other', icon: 'sparkles' },
+  { value: 'shopping', label: 'Shopping & city life', icon: 'shopping' },
+  { value: 'romance', label: 'Romance & dreamy moments', icon: 'romantic' },
+  { value: 'family', label: 'Family fun', icon: 'family' },
+  { value: 'instagram', label: 'Beautiful & Instagram-worthy', icon: 'camera' },
+  { value: 'everything', label: 'A little bit of everything!', icon: 'sparkles' },
 ];
 
 export const BUDGET_CURRENCIES = [
@@ -178,7 +152,6 @@ export const enquirySections = [
     id: 'traveller',
     number: '1',
     title: 'Meet the Traveller',
-    description: "Let's get to know you — no passport interrogation required.",
     scene: 'traveller',
     icon: 'solo',
     theme: { accent: '#ff6b4a', soft: '#fff1ec', deep: '#c2410c' },

@@ -10,7 +10,7 @@ function setError(errors, path, message) {
 
 export function validateEnquiry(formData) {
   const errors = {};
-  const { traveller, trip, vibe, budget, importantBits } = formData;
+  const { traveller, trip, budget, importantBits } = formData;
 
   if (!traveller.fullName.trim()) {
     setError(errors, 'traveller.fullName', 'Please enter your name.');
@@ -76,10 +76,6 @@ export function validateEnquiry(formData) {
 
   if (!trip.flexibleNearestAirport) {
     setError(errors, 'trip.flexibleNearestAirport', 'Please choose Yes or No.');
-  }
-
-  if (vibe.mustInclude.includes('other') && !vibe.mustIncludeOther.trim()) {
-    setError(errors, 'vibe.mustIncludeOther', 'Please tell us what else the holiday must include.');
   }
 
   const budgetAmount = String(budget.amount || '').trim();

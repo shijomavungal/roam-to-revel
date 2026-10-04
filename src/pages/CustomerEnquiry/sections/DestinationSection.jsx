@@ -8,7 +8,6 @@ import { AirportInput } from '../../../components/AirportInput/AirportInput';
 import {
   DATE_FLEXIBILITY,
   DESTINATION_CERTAINTY,
-  HOLIDAY_TYPES,
   YES_NO,
 } from '../../../data/enquiryFormConfig';
 
@@ -25,7 +24,7 @@ const DESTINATION_PROMPTS = {
   },
 };
 
-export function DestinationSection({ formData, errors, updateField, toggleList }) {
+export function DestinationSection({ formData, errors, updateField }) {
   const { trip } = formData;
   const destinationPrompt = DESTINATION_PROMPTS[trip.destinationCertainty];
 
@@ -122,21 +121,6 @@ export function DestinationSection({ formData, errors, updateField, toggleList }
           />
         </FormField>
       </div>
-
-      <FormField
-        errorPath="trip.holidayTypes"
-        label="What type of holiday are you dreaming of?"
-        hint="Select all that apply."
-        error={errors['trip.holidayTypes']}
-      >
-        <ChoiceCards
-          name="holidayTypes"
-          multiple
-          options={HOLIDAY_TYPES}
-          values={trip.holidayTypes}
-          onToggle={(value) => toggleList('trip.holidayTypes', value)}
-        />
-      </FormField>
     </>
   );
 }

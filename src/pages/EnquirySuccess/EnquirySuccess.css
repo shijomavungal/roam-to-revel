@@ -56,7 +56,8 @@
   margin: 0;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-family: var(--display);
+  font-size: var(--fs-body);
   font-weight: 700;
   color: var(--step-deep);
 }
@@ -83,13 +84,16 @@
 .success-card h1 {
   margin: 8px 0 0;
   font-family: var(--display);
-  font-size: 42px;
+  font-size: var(--fs-title);
+  font-weight: 700;
+  line-height: var(--lh-body);
 }
 
 .success-card__lead {
   margin: 12px 0 0;
-  font-size: 18px;
-  font-weight: 600;
+  font-family: var(--display);
+  font-size: var(--fs-heading);
+  font-weight: 700;
 }
 
 .success-card__meta {
@@ -125,6 +129,8 @@
   );
   color: #fff;
   text-decoration: none;
+  font-family: var(--display);
+  font-size: var(--fs-label);
   font-weight: 700;
   box-shadow: 0 10px 22px color-mix(in srgb, var(--step-accent) 38%, transparent);
   transition: transform 160ms ease;

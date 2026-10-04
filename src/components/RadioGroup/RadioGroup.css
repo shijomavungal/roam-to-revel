@@ -28,7 +28,10 @@
   background: var(--white);
   cursor: pointer;
   min-height: 44px;
-  font-size: 15px;
+  font-family: var(--display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-label);
+  line-height: var(--lh-body);
   transition:
     transform 160ms ease,
     border-color 160ms ease,

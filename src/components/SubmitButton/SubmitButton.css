@@ -5,7 +5,8 @@
   padding: 16px 20px;
   background: linear-gradient(160deg, var(--ocean) 0%, var(--ocean-deep) 100%);
   color: var(--paper);
-  font-size: 17px;
+  font-family: var(--display);
+  font-size: var(--fs-label);
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(0, 0, 170, 0.28);

@@ -8,7 +8,6 @@ export const createInitialEnquiry = () => ({
     adults: 2,
     children: 0,
     childDatesOfBirth: [],
-    travelGangNotes: '',
   },
   trip: {
     destinationCertainty: '',
@@ -18,13 +17,9 @@ export const createInitialEnquiry = () => ({
     dateFlexibility: '',
     flyFrom: '',
     flexibleNearestAirport: '',
-    holidayTypes: [],
   },
   vibe: {
-    pace: '',
-    mustInclude: [],
-    mustIncludeOther: '',
-    wowFactor: '',
+    holidayVibes: [],
   },
   budget: {
     amount: '',
@@ -38,7 +33,6 @@ export const createInitialEnquiry = () => ({
     specialRequirementsOther: '',
     travelConfirmations: [],
     alreadyBooked: [],
-    doNotWant: '',
   },
   personalTouch: {
     dreamExperience: '',

@@ -9,12 +9,12 @@
 
 @media (max-width: 640px) {
   .trip-dates__fields .form-field__label {
-    font-size: 13px;
+    font-size: var(--fs-label);
   }
 
   .trip-dates__trigger {
     padding: 12px 10px;
-    font-size: 14px;
+    font-size: var(--fs-body);
   }
 }
 
@@ -79,7 +79,8 @@
 .trip-dates__steps small {
   display: block;
   color: var(--muted);
-  font-size: 11px;
+  font-family: var(--display);
+  font-size: var(--fs-body);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
@@ -89,13 +90,15 @@
   display: block;
   margin-top: 2px;
   color: #1d4e89;
-  font-size: 16px;
+  font-family: var(--display);
+  font-size: var(--fs-label);
+  font-weight: 700;
 }
 
 .trip-dates__prompt {
   margin: 12px 2px 4px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--fs-body);
 }
 
 .trip-calendar__toolbar {
@@ -130,7 +133,8 @@
 .trip-calendar__title {
   margin: 0 0 8px;
   text-align: center;
-  font-size: 18px;
+  font-family: var(--display);
+  font-size: var(--fs-label);
   font-weight: 700;
   color: var(--ink);
 }
@@ -144,8 +148,9 @@
 .trip-calendar__weekdays span {
   text-align: center;
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--display);
+  font-size: var(--fs-body);
+  font-weight: 700;
   padding-bottom: 6px;
 }
 
@@ -216,6 +221,8 @@
   background: transparent;
   color: var(--ocean);
   font: inherit;
+  font-family: var(--display);
+  font-size: var(--fs-label);
   font-weight: 700;
   cursor: pointer;
   padding: 8px;

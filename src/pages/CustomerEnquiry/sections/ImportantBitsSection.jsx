@@ -1,6 +1,5 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextInput } from '../../../components/TextInput/TextInput';
-import { TextArea } from '../../../components/TextArea/TextArea';
 import { CheckboxGroup } from '../../../components/CheckboxGroup/CheckboxGroup';
 import {
   ALREADY_BOOKED,
@@ -73,20 +72,6 @@ export function ImportantBitsSection({ formData, errors, updateField, toggleList
           />
         </FormField>
       </div>
-
-      <FormField
-        id="doNotWant"
-        label="Is there anything you definitely DON'T want on your holiday?"
-        hint="e.g. long walking tours, early mornings, crowded places, adventure activities."
-      >
-        <TextArea
-          id="doNotWant"
-          name="doNotWant"
-          value={importantBits.doNotWant}
-          placeholder="Anything we should avoid"
-          onChange={(event) => updateField('importantBits.doNotWant', event.target.value)}
-        />
-      </FormField>
     </>
   );
 }
