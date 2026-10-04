@@ -11,7 +11,6 @@ import { sectionHasError } from '../../utils/validation';
 import { stepThemeStyle } from '../../utils/stepTheme';
 import { TravellerSection } from './sections/TravellerSection';
 import { DestinationSection } from './sections/DestinationSection';
-import { VibeSection } from './sections/VibeSection';
 import { BudgetSection } from './sections/BudgetSection';
 import { ImportantBitsSection } from './sections/ImportantBitsSection';
 import { PersonalTouchSection } from './sections/PersonalTouchSection';
@@ -20,7 +19,6 @@ import './CustomerEnquiry.css';
 const SECTION_CONTENT = {
   traveller: TravellerSection,
   destination: DestinationSection,
-  vibe: VibeSection,
   budget: BudgetSection,
   important: ImportantBitsSection,
   personal: PersonalTouchSection,

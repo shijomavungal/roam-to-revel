@@ -1,13 +1,28 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextArea } from '../../../components/TextArea/TextArea';
 import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
-import { SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
+import { HOLIDAY_VIBES, SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
 
-export function PersonalTouchSection({ formData, updateField, toggleList }) {
+export function PersonalTouchSection({ formData, errors, updateField, toggleList }) {
   const { personalTouch } = formData;
 
   return (
     <>
+      <FormField
+        errorPath="personalTouch.holidayVibes"
+        label="What would make this trip perfect for you?"
+        hint="Choose everything that sounds like you."
+        error={errors['personalTouch.holidayVibes']}
+      >
+        <ChoiceCards
+          name="holidayVibes"
+          multiple
+          options={HOLIDAY_VIBES}
+          values={personalTouch.holidayVibes}
+          onToggle={(value) => toggleList('personalTouch.holidayVibes', value)}
+        />
+      </FormField>
+
       <FormField errorPath="personalTouch.specialOccasion" label="Is this trip for a special occasion?">
         <ChoiceCards
           name="specialOccasion"

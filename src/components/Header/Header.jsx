@@ -14,6 +14,7 @@ export function Header({ compact = false }) {
             width={400}
             height={99}
           />
+          <p className="brand__slogan">{brandConfig.slogan}</p>
         </div>
         {compact ? null : (
           <div className="site-header__copy">

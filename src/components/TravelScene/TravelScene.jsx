@@ -14,12 +14,6 @@ const SCENES = {
     { icon: 'pin', size: 26, right: '16%', top: 56, motion: 'drop' },
     { icon: 'plane', size: 44, right: '4%', top: 18, motion: 'cruise' },
   ],
-  vibe: [
-    { icon: 'beach', size: 54, right: '30%', top: 22, motion: 'bob' },
-    { icon: 'nightlife', size: 40, right: '19%', top: 8, motion: 'float' },
-    { icon: 'camera', size: 40, right: '9%', top: 44, motion: 'float' },
-    { icon: 'sparkles', size: 26, right: '3%', top: 10, motion: 'twinkle' },
-  ],
   budget: [
     { icon: 'piggy', size: 54, right: '30%', top: 24, motion: 'bob' },
     { icon: 'coin', size: 32, right: '21%', top: 8, motion: 'flip' },

@@ -141,7 +141,6 @@ export const SPECIAL_OCCASIONS = [
 export const SECTION_PREFIX = {
   traveller: 'traveller',
   destination: 'trip',
-  vibe: 'vibe',
   budget: 'budget',
   important: 'importantBits',
   personal: 'personalTouch',
@@ -179,19 +178,8 @@ export const enquirySections = [
     cheer: 'Your trip is taking shape!',
   },
   {
-    id: 'vibe',
-    number: '4',
-    title: 'Your Holiday Vibe',
-    kicker: 'Dream. Explore. Repeat.',
-    description: 'Tell us what makes your perfect trip.',
-    scene: 'vibe',
-    icon: 'camera',
-    theme: { accent: '#e0457b', soft: '#fdeef4', deep: '#be185d' },
-    cheer: 'Halfway to paradise!',
-  },
-  {
     id: 'important',
-    number: '5',
+    number: '4',
     title: 'The Important Bits',
     kicker: 'Better information, better trip',
     description: 'A few final details to make your trip smooth.',
@@ -202,7 +190,7 @@ export const enquirySections = [
   },
   {
     id: 'personal',
-    number: '6',
+    number: '5',
     title: 'Your Personal Touch',
     kicker: 'Different people. Different dreams. Same day.',
     description: 'Because every traveller is unique.',

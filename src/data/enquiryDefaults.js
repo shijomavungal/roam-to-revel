@@ -18,9 +18,6 @@ export const createInitialEnquiry = () => ({
     flyFrom: '',
     flexibleNearestAirport: '',
   },
-  vibe: {
-    holidayVibes: [],
-  },
   budget: {
     amount: '',
     currency: 'INR',
@@ -35,6 +32,7 @@ export const createInitialEnquiry = () => ({
     alreadyBooked: [],
   },
   personalTouch: {
+    holidayVibes: [],
     dreamExperience: '',
     specialOccasion: [],
     additionalNotes: '',
