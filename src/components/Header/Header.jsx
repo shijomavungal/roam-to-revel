@@ -18,7 +18,14 @@ export function Header({ compact = false }) {
         </div>
         {compact ? null : (
           <div className="site-header__copy">
-            <p className="site-header__intro">{brandConfig.intro}</p>
+            <p className="site-header__intro">
+              {brandConfig.intro.split('*').map((part, index) => (
+                <span key={index}>
+                  {index > 0 ? <span className="required-mark required-mark--inline">*</span> : null}
+                  {part}
+                </span>
+              ))}
+            </p>
           </div>
         )}
       </div>

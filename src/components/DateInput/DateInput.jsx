@@ -175,6 +175,11 @@ export function DateInput({
           ref={popoverRef}
           role="dialog"
           aria-label={`Choose ${title.toLowerCase()}`}
+          onAnimationEnd={(event) => {
+            if (event.target === event.currentTarget) {
+              event.currentTarget.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+          }}
         >
           <div className="date-picker__head">
             <span className="date-picker__head-icon">

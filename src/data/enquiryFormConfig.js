@@ -13,6 +13,23 @@ export const COUNTRY_CODES = [
   { value: '+65', label: 'SG +65' },
 ];
 
+export const DEFAULT_COUNTRY_CODE = '+91';
+
+export const CURRENCY_BY_COUNTRY_CODE = {
+  '+44': 'GBP',
+  '+91': 'INR',
+  '+1': 'USD',
+  '+353': 'EUR',
+  '+61': 'AUD',
+  '+971': 'AED',
+  '+33': 'EUR',
+  '+49': 'EUR',
+  '+34': 'EUR',
+  '+39': 'EUR',
+  '+81': 'JPY',
+  '+65': 'SGD',
+};
+
 export const GROUP_TYPES = [
   { value: 'just_me', label: 'Just me', hint: 'Solo trip', icon: 'solo' },
   { value: 'couple', label: 'Couple getaway', hint: 'Two travellers', icon: 'couple' },
@@ -60,6 +77,7 @@ export const BUDGET_CURRENCIES = [
   { value: 'AUD', label: 'AUD A$' },
   { value: 'SGD', label: 'SGD S$' },
   { value: 'CAD', label: 'CAD C$' },
+  { value: 'JPY', label: 'JPY ¥' },
   { value: 'THB', label: 'THB ฿' },
   { value: 'LKR', label: 'LKR' },
 ];
@@ -70,7 +88,6 @@ export const BUDGET_INCLUDES = [
   { value: 'airport_transfers', label: 'Airport transfers', icon: 'taxi' },
   { value: 'activities', label: 'Activities & excursions', icon: 'ticket' },
   { value: 'car_rental', label: 'Car rental', icon: 'car' },
-  { value: 'travel_insurance', label: 'Travel insurance', icon: 'shield' },
   { value: 'everything', label: 'Everything from A to Z!', icon: 'globe' },
 ];
 

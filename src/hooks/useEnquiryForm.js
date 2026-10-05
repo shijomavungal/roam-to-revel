@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { enquirySections } from '../data/enquiryFormConfig';
 import { createInitialEnquiry } from '../data/enquiryDefaults';
 import { submitEnquiry } from '../services/enquiryService';
 import { setByPath, toggleExclusive } from '../utils/formHelpers';
+import { currencyForCountryCode } from '../utils/locale';
 import { validateEnquiry, validateSection } from '../utils/validation';
 
 export function useEnquiryForm() {
@@ -15,6 +16,7 @@ export function useEnquiryForm() {
   const [direction, setDirection] = useState('forward');
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const currencyChosenRef = useRef(false);
 
   const currentSection = enquirySections[stepIndex];
   const isFirst = stepIndex === 0;
@@ -30,7 +32,12 @@ export function useEnquiryForm() {
   };
 
   const updateField = (path, value) => {
-    setFormData((current) => setByPath(current, path, value));
+    if (path === 'budget.currency') currencyChosenRef.current = true;
+    setFormData((current) => {
+      const next = setByPath(current, path, value);
+      if (path !== 'traveller.whatsappCountryCode' || currencyChosenRef.current) return next;
+      return setByPath(next, 'budget.currency', currencyForCountryCode(value));
+    });
     clearError(path);
     setSubmitError('');
   };

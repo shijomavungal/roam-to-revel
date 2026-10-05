@@ -108,7 +108,7 @@ a {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: clip;
+  overflow-x: clip;
   transition:
     --step-accent 600ms ease,
     --step-soft 600ms ease,
@@ -123,8 +123,12 @@ a {
 }
 
 .required-mark {
-  color: var(--sunset);
+  color: var(--danger);
   margin-left: 4px;
+}
+
+.required-mark--inline {
+  margin-left: 0;
 }
 
 .helper-text {

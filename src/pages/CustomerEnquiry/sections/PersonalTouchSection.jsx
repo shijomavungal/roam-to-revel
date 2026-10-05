@@ -1,10 +1,37 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextArea } from '../../../components/TextArea/TextArea';
 import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
+import { DateInput } from '../../../components/DateInput/DateInput';
 import { HOLIDAY_VIBES, SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
+import { formatISO } from '../../../utils/calendar';
+
+const OCCASION_DATES = [
+  { occasion: 'birthday', field: 'birthdayDate', label: 'Birthday date', icon: 'cake' },
+  { occasion: 'anniversary', field: 'anniversaryDate', label: 'Anniversary date', icon: 'rings' },
+];
+
+function yearsFromToday(years) {
+  const date = new Date();
+  date.setFullYear(date.getFullYear() + years);
+  return formatISO(date);
+}
+
+const OCCASION_DATE_MIN = yearsFromToday(-100);
+const OCCASION_DATE_MAX = yearsFromToday(2);
 
 export function PersonalTouchSection({ formData, errors, updateField, toggleList }) {
   const { personalTouch } = formData;
+  const occasionDates = OCCASION_DATES.filter(({ occasion }) =>
+    personalTouch.specialOccasion.includes(occasion),
+  );
+
+  const handleOccasionToggle = (value) => {
+    const dated = OCCASION_DATES.find(({ occasion }) => occasion === value);
+    if (dated && personalTouch.specialOccasion.includes(value)) {
+      updateField(`personalTouch.${dated.field}`, '');
+    }
+    toggleList('personalTouch.specialOccasion', value);
+  };
 
   return (
     <>
@@ -29,9 +56,30 @@ export function PersonalTouchSection({ formData, errors, updateField, toggleList
           multiple
           options={SPECIAL_OCCASIONS}
           values={personalTouch.specialOccasion}
-          onToggle={(value) => toggleList('personalTouch.specialOccasion', value)}
+          onToggle={handleOccasionToggle}
         />
       </FormField>
+
+      {occasionDates.length ? (
+        <div className={`field-grid ${occasionDates.length > 1 ? 'two' : ''}`}>
+          {occasionDates.map(({ field, label, icon }) => (
+            <FormField key={field} id={field} label={label} hint="Optional">
+              <DateInput
+                id={field}
+                name={field}
+                value={personalTouch[field]}
+                min={OCCASION_DATE_MIN}
+                max={OCCASION_DATE_MAX}
+                placeholder="Select a date"
+                title={label}
+                icon={icon}
+                showAge={false}
+                onChange={(value) => updateField(`personalTouch.${field}`, value)}
+              />
+            </FormField>
+          ))}
+        </div>
+      ) : null}
 
       <div className="field-grid two">
         <FormField
