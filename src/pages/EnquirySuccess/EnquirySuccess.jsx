@@ -39,6 +39,9 @@ export function EnquirySuccess() {
             Thank you for trusting {brandConfig.companyName} with your travel dreams. Our travel
             team will review your requirements and contact you shortly.
           </p>
+          {lastEnquiry?.referrerName ? (
+            <p>We'll make sure we thank {lastEnquiry.referrerName}.</p>
+          ) : null}
           {lastEnquiry ? (
             <div className="success-card__meta">
               <p>

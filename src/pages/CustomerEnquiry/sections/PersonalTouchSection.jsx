@@ -1,8 +1,10 @@
 import { FormField } from '../../../components/FormField/FormField';
 import { TextArea } from '../../../components/TextArea/TextArea';
+import { TextInput } from '../../../components/TextInput/TextInput';
+import { PhoneInput } from '../../../components/PhoneInput/PhoneInput';
 import { ChoiceCards } from '../../../components/ChoiceCards/ChoiceCards';
 import { DateInput } from '../../../components/DateInput/DateInput';
-import { HOLIDAY_VIBES, SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
+import { HEARD_ABOUT, HOLIDAY_VIBES, SPECIAL_OCCASIONS } from '../../../data/enquiryFormConfig';
 import { formatISO } from '../../../utils/calendar';
 
 const OCCASION_DATES = [
@@ -31,6 +33,26 @@ export function PersonalTouchSection({ formData, errors, updateField, toggleList
       updateField(`personalTouch.${dated.field}`, '');
     }
     toggleList('personalTouch.specialOccasion', value);
+  };
+
+  const heardAbout = personalTouch.heardAbout || {};
+  const referrer = heardAbout.referrer || {};
+
+  const handleHeardAbout = (value) => {
+    updateField('personalTouch.heardAbout.channel', value);
+    if (value !== 'other') {
+      updateField('personalTouch.heardAbout.otherDetail', '');
+    }
+    if (value !== 'referral') {
+      updateField('personalTouch.heardAbout.referrer.name', '');
+      updateField('personalTouch.heardAbout.referrer.whatsappNumber', '');
+      updateField('personalTouch.heardAbout.referrer.email', '');
+    } else if (!referrer.whatsappCountryCode) {
+      updateField(
+        'personalTouch.heardAbout.referrer.whatsappCountryCode',
+        formData.traveller.whatsappCountryCode,
+      );
+    }
   };
 
   return (
@@ -110,6 +132,114 @@ export function PersonalTouchSection({ formData, errors, updateField, toggleList
           />
         </FormField>
       </div>
+
+      <FormField
+        errorPath="personalTouch.heardAbout.channel"
+        label="How did you hear about Roam To Revel?"
+        hint="Optional — skip this if you prefer."
+        error={errors['personalTouch.heardAbout.channel']}
+      >
+        <ChoiceCards
+          name="heardAbout"
+          options={HEARD_ABOUT}
+          value={heardAbout.channel}
+          onChange={handleHeardAbout}
+        />
+      </FormField>
+
+      {heardAbout.channel === 'other' ? (
+        <div className="destination-followup">
+          <FormField
+            id="heardAboutOther"
+            errorPath="personalTouch.heardAbout.otherDetail"
+            label="Please tell us a little more"
+            hint="Optional"
+            error={errors['personalTouch.heardAbout.otherDetail']}
+          >
+            <TextInput
+              id="heardAboutOther"
+              name="heardAboutOther"
+              value={heardAbout.otherDetail}
+              placeholder="e.g. a travel blog, a magazine, or an event"
+              onChange={(event) =>
+                updateField('personalTouch.heardAbout.otherDetail', event.target.value)
+              }
+            />
+          </FormField>
+        </div>
+      ) : null}
+
+      {heardAbout.channel === 'referral' ? (
+        <div className="destination-followup">
+          <p className="helper-text">
+            If a friend sent you our way, tell us who — we'd love to thank them.
+          </p>
+          <div className="field-grid contact">
+            <FormField
+              id="referrerName"
+              errorPath="personalTouch.heardAbout.referrer.name"
+              label="Their name"
+              required
+              error={errors['personalTouch.heardAbout.referrer.name']}
+            >
+              <TextInput
+                id="referrerName"
+                name="referrerName"
+                value={referrer.name}
+                placeholder="e.g. Priya Sharma"
+                autoComplete="off"
+                onChange={(event) =>
+                  updateField('personalTouch.heardAbout.referrer.name', event.target.value)
+                }
+              />
+            </FormField>
+
+            <FormField
+              id="referrerEmail"
+              errorPath="personalTouch.heardAbout.referrer.email"
+              label="Their email address"
+              hint="Optional"
+              error={errors['personalTouch.heardAbout.referrer.email']}
+            >
+              <TextInput
+                id="referrerEmail"
+                name="referrerEmail"
+                type="email"
+                value={referrer.email}
+                placeholder="friend@example.com"
+                autoComplete="off"
+                onChange={(event) =>
+                  updateField('personalTouch.heardAbout.referrer.email', event.target.value)
+                }
+              />
+            </FormField>
+
+            <FormField
+              id="referrerWhatsapp"
+              errorPath="personalTouch.heardAbout.referrer.whatsappNumber"
+              label="Their WhatsApp / mobile number"
+              required
+              hint="We'll use this to thank the right person."
+              error={errors['personalTouch.heardAbout.referrer.whatsappNumber']}
+            >
+              <PhoneInput
+                id="referrerWhatsapp"
+                countryCode={referrer.whatsappCountryCode}
+                number={referrer.whatsappNumber}
+                onCountryChange={(event) =>
+                  updateField(
+                    'personalTouch.heardAbout.referrer.whatsappCountryCode',
+                    event.target.value,
+                  )
+                }
+                onNumberChange={(event) =>
+                  updateField('personalTouch.heardAbout.referrer.whatsappNumber', event.target.value)
+                }
+              />
+            </FormField>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

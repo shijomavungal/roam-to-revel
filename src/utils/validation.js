@@ -8,9 +8,17 @@ function setError(errors, path, message) {
   errors[path] = message;
 }
 
+function normalizePhone(countryCode, number) {
+  return `${countryCode || ''}${number || ''}`.replace(/\D/g, '');
+}
+
+function normalizeEmail(email) {
+  return String(email || '').trim().toLowerCase();
+}
+
 export function validateEnquiry(formData) {
   const errors = {};
-  const { traveller, trip, budget, importantBits } = formData;
+  const { traveller, trip, budget, importantBits, personalTouch } = formData;
 
   if (!traveller.fullName.trim()) {
     setError(errors, 'traveller.fullName', 'Please enter your name.');
@@ -104,6 +112,60 @@ export function validateEnquiry(formData) {
       'importantBits.travelConfirmations',
       'Please confirm passport validity and travel insurance for all travelling members.',
     );
+  }
+
+  const heardAbout = personalTouch?.heardAbout;
+  if (heardAbout?.channel === 'referral') {
+    const referrer = heardAbout.referrer || {};
+    const referrerName = String(referrer.name || '').trim();
+    const referrerNumber = String(referrer.whatsappNumber || '').trim();
+    const referrerEmail = String(referrer.email || '').trim();
+
+    if (!referrerName) {
+      setError(errors, 'personalTouch.heardAbout.referrer.name', 'Please enter their name.');
+    } else if (referrerName.length < 2) {
+      setError(errors, 'personalTouch.heardAbout.referrer.name', 'Name must be at least 2 characters.');
+    }
+
+    if (!referrerNumber) {
+      setError(
+        errors,
+        'personalTouch.heardAbout.referrer.whatsappNumber',
+        'Please enter their WhatsApp / mobile number.',
+      );
+    } else if (!PHONE_PATTERN.test(referrerNumber)) {
+      setError(
+        errors,
+        'personalTouch.heardAbout.referrer.whatsappNumber',
+        'Please enter a valid phone number.',
+      );
+    }
+
+    if (referrerEmail && !EMAIL_PATTERN.test(referrerEmail)) {
+      setError(errors, 'personalTouch.heardAbout.referrer.email', 'Please enter a valid email address.');
+    }
+
+    const samePhone =
+      referrerNumber &&
+      normalizePhone(traveller.whatsappCountryCode, traveller.whatsappNumber) ===
+        normalizePhone(referrer.whatsappCountryCode, referrer.whatsappNumber);
+    const sameEmail =
+      referrerEmail && normalizeEmail(traveller.email) === normalizeEmail(referrerEmail);
+
+    if (samePhone) {
+      setError(
+        errors,
+        'personalTouch.heardAbout.referrer.whatsappNumber',
+        'Please enter the number of the person who referred you, not your own.',
+      );
+    }
+    if (sameEmail) {
+      setError(
+        errors,
+        'personalTouch.heardAbout.referrer.email',
+        'Please enter the email of the person who referred you, not your own.',
+      );
+    }
   }
 
   return errors;

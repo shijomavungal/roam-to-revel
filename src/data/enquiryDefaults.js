@@ -43,11 +43,25 @@ export const createInitialEnquiry = () => {
       birthdayDate: '',
       anniversaryDate: '',
       additionalNotes: '',
+      heardAbout: {
+        channel: '',
+        otherDetail: '',
+        referrer: {
+          name: '',
+          whatsappCountryCode: countryCode,
+          whatsappNumber: '',
+          email: '',
+        },
+      },
     },
   };
 };
 
 export function buildEnquiryPayload(formData) {
+  const heardAbout = formData.personalTouch.heardAbout || {};
+  const channel = heardAbout.channel || '';
+  const referrer = heardAbout.referrer || {};
+
   return {
     source: 'public_enquiry_form',
     submittedAt: new Date().toISOString(),
@@ -61,6 +75,22 @@ export function buildEnquiryPayload(formData) {
       ...formData.traveller,
       whatsapp: `${formData.traveller.whatsappCountryCode} ${formData.traveller.whatsappNumber}`.trim(),
       totalTravellers: Number(formData.traveller.adults || 0) + Number(formData.traveller.children || 0),
+    },
+    personalTouch: {
+      ...formData.personalTouch,
+      heardAbout: {
+        channel,
+        otherDetail: channel === 'other' ? String(heardAbout.otherDetail || '').trim() : '',
+        referrer:
+          channel === 'referral'
+            ? {
+                ...referrer,
+                name: String(referrer.name || '').trim(),
+                email: String(referrer.email || '').trim(),
+                whatsapp: `${referrer.whatsappCountryCode || ''} ${referrer.whatsappNumber || ''}`.trim(),
+              }
+            : null,
+      },
     },
   };
 }

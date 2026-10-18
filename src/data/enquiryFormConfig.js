@@ -155,6 +155,15 @@ export const SPECIAL_OCCASIONS = [
   { value: 'treat', label: 'Just because we deserve a holiday!', icon: 'party' },
 ];
 
+export const HEARD_ABOUT = [
+  { value: 'instagram', label: 'Instagram', icon: 'camera' },
+  { value: 'facebook', label: 'Facebook', icon: 'friends' },
+  { value: 'website', label: 'Website / Google', icon: 'globe' },
+  { value: 'whatsapp', label: 'WhatsApp', icon: 'special' },
+  { value: 'referral', label: 'Referral from someone I know', icon: 'gift' },
+  { value: 'other', label: 'Other', icon: 'sparkles' },
+];
+
 export const SECTION_PREFIX = {
   traveller: 'traveller',
   destination: 'trip',

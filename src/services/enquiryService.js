@@ -21,6 +21,7 @@ export async function submitEnquiry(formData) {
       reference,
       submittedAt: payload.submittedAt,
       name: formData.traveller.fullName,
+      referrerName: payload.personalTouch?.heardAbout?.referrer?.name || '',
     }),
   );
 
